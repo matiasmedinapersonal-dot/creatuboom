@@ -128,12 +128,14 @@
         .hero {
             padding: 5rem 0 4rem;
             border-bottom: 1px solid var(--border-color);
+            text-align: center;
         }
 
         .hero-meta {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            gap: 2rem;
             margin-bottom: 2rem;
             padding-bottom: 1rem;
             border-bottom: 1px dashed var(--border-color);
@@ -145,7 +147,8 @@
             line-height: 0.95;
             letter-spacing: -0.04em;
             text-transform: uppercase;
-            margin-bottom: 2rem;
+            margin: 0 auto 2.5rem;
+            max-width: 1000px;
         }
 
         .hero-title .highlight {
@@ -154,37 +157,23 @@
             font-style: italic;
         }
 
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .hero-image-wrapper {
-            position: relative;
-            background-color: var(--bg-card);
+        .hero-main-image {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto 3rem;
             border: 1px solid var(--border-color);
             overflow: hidden;
-            aspect-ratio: 16/9;
         }
 
-        .hero-image-placeholder {
+        .hero-main-image img {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(160, 9, 44, 0.4) 0%, rgba(8, 8, 8, 0.95) 100%),
-                        radial-gradient(circle at 30% 30%, rgba(160, 9, 44, 0.2), transparent 70%);
-            display: flex;
-            align-items: flex-end;
-            padding: 2rem;
+            height: auto;
+            display: block;
         }
 
-        .hero-image-caption {
-            font-weight: 200;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            border-left: 2px solid var(--accent-red);
-            padding-left: 1rem;
+        .hero-content-centered {
+            max-width: 750px;
+            margin: 0 auto;
         }
 
         .hero-lead {
@@ -192,7 +181,7 @@
             font-size: 1.25rem;
             line-height: 1.5;
             color: var(--text-primary);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .hero-lead strong {
@@ -233,6 +222,7 @@
         .stat-item {
             padding: 2.5rem 2rem;
             border-right: 1px solid var(--border-color);
+            text-align: center;
         }
 
         .stat-item:last-child {
@@ -340,16 +330,7 @@
             border-bottom: 1px solid var(--border-color);
             position: relative;
             overflow: hidden;
-        }
-
-        .manifesto::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background-color: var(--accent-red);
+            text-align: center;
         }
 
         .quote-text {
@@ -497,10 +478,6 @@
 
         /* --- RESPONSIVE --- */
         @media (max-width: 992px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-            }
-
             .stats-bar {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -550,11 +527,11 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION CENTRADA -->
     <section class="hero">
         <div class="container">
             <div class="hero-meta">
-                <span class="editorial-label">Publicación Especial</span>
+                <span class="editorial-label" style="margin-bottom: 0;">Emprendedora del Mes</span>
                 <span class="w-300" style="font-size: 0.85rem; color: var(--text-muted);">Octubre, 2026</span>
             </div>
 
@@ -562,22 +539,20 @@
                 La estética del <span class="highlight">pensamiento</span> en la era digital.
             </h1>
 
-            <div class="hero-grid">
-                <div class="hero-image-wrapper">
-                    <div class="hero-image-placeholder">
-                        <p class="hero-image-caption">Fotografía Editorial — Serie "Sombras & Estructura" (2026)</p>
-                    </div>
-                </div>
+            <!-- IMAGEN PRINCIPAL EN GRANDE -->
+            <div class="hero-main-image">
+                <img src="emprendedoradelmes.jpg" alt="Imagen principal editorial">
+            </div>
 
-                <div class="hero-content">
-                    <p class="hero-lead">
-                        Una exploración profunda sobre la intersección entre <strong>diseño radical</strong>, cultura visual y la narrativa contemporánea.
-                    </p>
-                    <p class="w-300" style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;">
-                        Redefinimos el periodismo visual mediante una maquetación audaz y tipografía estructurada para lectores que buscan profundidad en un mundo acelerado.
-                    </p>
-                    <a href="#suscripcion" class="btn-primary">Obtener la edición impresa</a>
-                </div>
+            <!-- CONTENIDO INFERIOR CENTRADO -->
+            <div class="hero-content-centered">
+                <p class="hero-lead">
+                    Una exploración profunda sobre la intersección entre <strong>diseño radical</strong>, cultura visual y la narrativa contemporánea.
+                </p>
+                <p class="w-300" style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;">
+                    Redefinimos el periodismo visual mediante una maquetación audaz y tipografía estructurada para lectores que buscan profundidad en un mundo acelerado.
+                </p>
+                <a href="#suscripcion" class="btn-primary">Obtener la edición impresa</a>
             </div>
         </div>
     </section>
