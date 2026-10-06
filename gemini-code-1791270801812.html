@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOCTURNE — Editorial Magazine & Journal</title>
+    <!-- Google Fonts: Inter with multiple weights -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-black: #080808;
+            --bg-surface: #121212;
+            --bg-card: #181818;
+            --accent-red: #a0092c;
+            --accent-red-hover: #b80c34;
+            --accent-red-light: rgba(160, 9, 44, 0.15);
+            --text-primary: #f0f0f0;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666666;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-red: rgba(160, 9, 44, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-primary);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- TYPOGRAPHY UTILITIES --- */
+        .w-100 { font-weight: 100; }
+        .w-200 { font-weight: 200; }
+        .w-300 { font-weight: 300; }
+        .w-400 { font-weight: 400; }
+        .w-500 { font-weight: 500; }
+        .w-600 { font-weight: 600; }
+        .w-700 { font-weight: 700; }
+        .w-800 { font-weight: 800; }
+        .w-900 { font-weight: 900; }
+
+        .editorial-label {
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent-red);
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        /* --- CONTAINER --- */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* --- HEADER / NAVBAR --- */
+        header {
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            background-color: rgba(8, 8, 8, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0;
+        }
+
+        .issue-tag {
+            font-weight: 300;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.8rem;
+            letter-spacing: -0.05em;
+            text-decoration: none;
+            color: var(--text-primary);
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-red);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-red);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 5rem 0 4rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .hero-title {
+            font-weight: 900;
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero-title .highlight {
+            color: var(--accent-red);
+            font-weight: 200;
+            font-style: italic;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            aspect-ratio: 16/9;
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(160, 9, 44, 0.4) 0%, rgba(8, 8, 8, 0.95) 100%),
+                        radial-gradient(circle at 30% 30%, rgba(160, 9, 44, 0.2), transparent 70%);
+            display: flex;
+            align-items: flex-end;
+            padding: 2rem;
+        }
+
+        .hero-image-caption {
+            font-weight: 200;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            border-left: 2px solid var(--accent-red);
+            padding-left: 1rem;
+        }
+
+        .hero-lead {
+            font-weight: 300;
+            font-size: 1.25rem;
+            line-height: 1.5;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+        }
+
+        .hero-lead strong {
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--accent-red);
+            color: #fff;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(160, 9, 44, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-red-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(160, 9, 44, 0.5);
+        }
+
+        /* --- STATS BAR --- */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--bg-surface);
+        }
+
+        .stat-item {
+            padding: 2.5rem 2rem;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-number {
+            font-weight: 800;
+            font-size: 2.8rem;
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .stat-number span {
+            color: var(--accent-red);
+        }
+
+        .stat-label {
+            font-weight: 300;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* --- EDITORIAL ARTICLES GRID --- */
+        .editorial-section {
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .section-title {
+            font-weight: 800;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .article-card {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid var(--border-red);
+            padding-top: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .article-num {
+            font-weight: 100;
+            font-size: 3rem;
+            color: var(--accent-red);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .article-title {
+            font-weight: 700;
+            font-size: 1.25rem;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .article-excerpt {
+            font-weight: 300;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-meta {
+            margin-top: auto;
+            font-weight: 400;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        /* --- FEATURED QUOTE / MANIFESTO --- */
+        .manifesto {
+            padding: 8rem 0;
+            background-color: var(--bg-surface);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .manifesto::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--accent-red);
+        }
+
+        .quote-text {
+            font-weight: 200;
+            font-size: clamp(1.8rem, 4vw, 3.2rem);
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .quote-text strong {
+            font-weight: 800;
+            color: #fff;
+            background: linear-gradient(120deg, transparent 0%, rgba(160, 9, 44, 0.4) 0%);
+        }
+
+        .author {
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-red);
+        }
+
+        /* --- NEWSLETTER / CTA --- */
+        .cta-section {
+            padding: 7rem 0;
+            text-align: center;
+        }
+
+        .cta-box {
+            max-width: 700px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-black) 100%);
+            border: 1px solid var(--border-red);
+            padding: 4rem 3rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-title {
+            font-weight: 900;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+
+        .cta-desc {
+            font-weight: 300;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-form {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .cta-input {
+            flex: 1;
+            background-color: var(--bg-black);
+            border: 1px solid var(--border-color);
+            padding: 1rem 1.25rem;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .cta-input:focus {
+            border-color: var(--accent-red);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 4rem 0 2rem;
+            background-color: var(--bg-black);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand .logo {
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .footer-desc {
+            font-weight: 300;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            max-width: 300px;
+        }
+
+        .footer-title {
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 300;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-red);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            font-weight: 300;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .stats-bar {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-form {
+                flex-direction: column;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container header-inner">
+            <span class="issue-tag">Vol. 04 / Edición Limitada</span>
+            <a href="#" class="logo">NOCT<span>URNE</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#articulos">Artículos</a></li>
+                    <li><a href="#manifiesto">Manifiesto</a></li>
+                    <li><a href="#suscripcion">Suscripción</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-meta">
+                <span class="editorial-label">Publicación Especial</span>
+                <span class="w-300" style="font-size: 0.85rem; color: var(--text-muted);">Octubre, 2026</span>
+            </div>
+
+            <h1 class="hero-title">
+                La estética del <span class="highlight">pensamiento</span> en la era digital.
+            </h1>
+
+            <div class="hero-grid">
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-placeholder">
+                        <p class="hero-image-caption">Fotografía Editorial — Serie "Sombras & Estructura" (2026)</p>
+                    </div>
+                </div>
+
+                <div class="hero-content">
+                    <p class="hero-lead">
+                        Una exploración profunda sobre la intersección entre <strong>diseño radical</strong>, cultura visual y la narrativa contemporánea.
+                    </p>
+                    <p class="w-300" style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;">
+                        Redefinimos el periodismo visual mediante una maquetación audaz y tipografía estructurada para lectores que buscan profundidad en un mundo acelerado.
+                    </p>
+                    <a href="#suscripcion" class="btn-primary">Obtener la edición impresa</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS / HIGHLIGHTS -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-number">100<span>%</span></div>
+            <div class="stat-label">Contenido Independiente</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">240<span>p</span></div>
+            <div class="stat-label">Páginas por Volumen</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">12<span>k</span></div>
+            <div class="stat-label">Suscriptores Globales</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">00<span>4</span></div>
+            <div class="stat-label">Número de Edición</div>
+        </div>
+    </div>
+
+    <!-- ARTICLES GRID -->
+    <section class="editorial-section" id="articulos">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <span class="editorial-label">Lecturas Destacadas</span>
+                    <h2 class="section-title">Contenido del Volumen</h2>
+                </div>
+                <span class="w-300" style="color: var(--text-muted); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em;">Selección de ensayos</span>
+            </div>
+
+            <div class="articles-grid">
+                <!-- Art 1 -->
+                <article class="article-card">
+                    <span class="article-num">01</span>
+                    <h3 class="article-title">Tipografía Mínima y el Impacto del Silencio Visual</h3>
+                    <p class="article-excerpt">
+                        Cómo la reducción de elementos gráficos incrementa la retención lectora y genera una respuesta emocional más intensa en publicaciones digitales e impresas.
+                    </p>
+                    <div class="article-meta">Por Elena Rostova — 8 min lectura</div>
+                </article>
+
+                <!-- Art 2 -->
+                <article class="article-card">
+                    <span class="article-num">02</span>
+                    <h3 class="article-title">El Dominio del Rojo Oscuro en la Cultura Nocturna</h3>
+                    <p class="article-excerpt">
+                        Análisis del uso del tono #a0092c como vehículo de sofisticación, elegancia y tensión dramática dentro de la moda y el arte contemporáneo.
+                    </p>
+                    <div class="article-meta">Por Marc Vance — 12 min lectura</div>
+                </article>
+
+                <!-- Art 3 -->
+                <article class="article-card">
+                    <span class="article-num">03</span>
+                    <h3 class="article-title">Arquitectura Brutalista y su Reaparición Digital</h3>
+                    <p class="article-excerpt">
+                        Del hormigón a la pantalla: la estética pesada y monolítica vuelve a dominar las interfaces de vanguardia y la dirección de arte moderna.
+                    </p>
+                    <div class="article-meta">Por Sarah Jenkins — 6 min lectura</div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section class="manifesto" id="manifiesto">
+        <div class="container">
+            <span class="editorial-label">Nuestro Manifiesto</span>
+            <blockquote class="quote-text">
+                "Creemos en el peso de las palabras, en el <strong>contraste absoluto</strong> entre luz y penumbra, y en el diseño que no pide perdón por exigir la atención completa del lector."
+            </blockquote>
+            <p class="author">— El Consejo Editorial de NOCTURNE</p>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION / NEWSLETTER -->
+    <section class="cta-section" id="suscripcion">
+        <div class="container">
+            <div class="cta-box">
+                <span class="editorial-label">Acceso Exclusivo</span>
+                <h2 class="cta-title">Únete a la Lectura</h2>
+                <p class="cta-desc">Recibe semanalmente ensayos breves, crónicas visuales y acceso prioritario a la edición física limitada.</p>
+                <form class="cta-form" onsubmit="event.preventDefault();">
+                    <input type="email" class="cta-input" placeholder="Tu correo electrónico..." required>
+                    <button type="submit" class="btn-primary">Suscribirse</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">NOCT<span>URNE</span></a>
+                    <p class="footer-desc">Una revista editorial independiente dedicada al arte, el diseño radical y el pensamiento contemporáneo.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Ediciones</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Volumen 04 (Actual)</a></li>
+                        <li><a href="#">Volumen 03</a></li>
+                        <li><a href="#">Volumen 02</a></li>
+                        <li><a href="#">Archivo Digital</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Editorial</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Sobre nosotros</a></li>
+                        <li><a href="#">Manifiesto</a></li>
+                        <li><a href="#">Colaboradores</a></li>
+                        <li><a href="#">Puntos de venta</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Redes</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter / X</a></li>
+                        <li><a href="#">Substack</a></li>
+                        <li><a href="#">Are.na</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 NOCTURNE Journal. Todos los derechos reservados.</p>
+                <p>Diseñado bajo estética editorial minimalista.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
