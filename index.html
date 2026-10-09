@@ -76,25 +76,24 @@
             z-index: 1000;
         }
 
- .header-inner {
+.header-inner {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 15px;
+    gap: 15px; /* Espacio entre el logo y el menú de navegación */
 }
 
 .logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
+    display: inline-block;
     text-decoration: none;
 }
 
 .logo-img {
-    width: 60px;
-    height: auto;
+    width: 180px;  /* Puedes ajustar este valor si lo quieres más grande o más chico */
+    height: auto;  /* Mantiene la proporción correcta de la imagen */
+    display: block;
+    margin: 0 auto;
 
         }
 
@@ -532,7 +531,6 @@
         <div class="container header-inner">
            <a href="#" class="logo">
     <img src="LOGO.png" alt="Logo de Crea tu Boom" class="logo-img">
-    <span>CREATUBOOM</span>
 </a>
             <nav>
                 <ul>
