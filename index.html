@@ -39,17 +39,18 @@
         }
 
         /* --- TYPOGRAPHY UTILITIES --- */
-        .w-100 { font-weight: 100; }
-        .w-200 { font-weight: 200; }
-        .w-300 { font-weight: 300; }
-        .w-400 { font-weight: 400; }
-        .w-500 { font-weight: 500; }
-        .w-600 { font-weight: 600; }
-        .w-700 { font-weight: 700; }
-        .w-800 { font-weight: 800; }
-        .w-900 { font-weight: 900; }
+        .w-100 { font-family: 'Inter', sans-serif; font-weight: 100; }
+        .w-200 { font-family: 'Inter', sans-serif; font-weight: 200; }
+        .w-300 { font-family: 'Inter', sans-serif; font-weight: 300; }
+        .w-400 { font-family: 'Inter', sans-serif; font-weight: 400; }
+        .w-500 { font-family: 'Inter', sans-serif; font-weight: 500; }
+        .w-600 { font-family: 'Inter', sans-serif; font-weight: 600; }
+        .w-700 { font-family: 'Inter', sans-serif; font-weight: 700; }
+        .w-800 { font-family: 'Inter', sans-serif; font-weight: 800; }
+        .w-900 { font-family: 'Inter', sans-serif; font-weight: 900; }
 
         .editorial-label {
+            font-family: 'Inter', sans-serif;
             font-weight: 600;
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -68,8 +69,8 @@
 
         /* --- HEADER / NAVBAR --- */
         header {
-    padding-top: 30px;    /* Espacio superior (puedes cambiar los píxeles a tu gusto) */
-    padding-bottom: 30px; /* Espacio inferior si lo necesitas */
+            padding-top: 30px;
+            padding-bottom: 30px;
             border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
@@ -78,46 +79,43 @@
             z-index: 1000;
         }
 
-.header-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 15px; /* Espacio entre el logo y el menú de navegación */
-}
-
-.logo {
-    display: inline-block;
-    text-decoration: none;
-}
-
-.logo-img {
-    width: 120px;  /* Puedes ajustar este valor si lo quieres más grande o más chico */
-    height: auto;  /* Mantiene la proporción correcta de la imagen */
-    display: block;
-    margin: 0 auto;
-
-        }
-
-        .issue-tag {
-            font-weight: 300;
-            font-size: 0.8rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--text-muted);
+        .header-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 15px;
         }
 
         .logo {
+            display: inline-block;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
             font-weight: 900;
             font-size: 1.8rem;
             letter-spacing: -0.05em;
-            text-decoration: none;
             color: var(--text-primary);
             text-transform: uppercase;
         }
 
         .logo span {
             color: var(--accent-red);
+        }
+
+        .logo-img {
+            width: 120px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .issue-tag {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
         }
 
         nav ul {
@@ -127,6 +125,7 @@
         }
 
         nav a {
+            font-family: 'Inter', sans-serif;
             color: var(--text-secondary);
             text-decoration: none;
             font-weight: 400;
@@ -144,7 +143,6 @@
         .hero {
             padding: 5rem 0 4rem;
             border-bottom: 1px solid var(--border-color);
-            text-align: center;
         }
 
         .hero-meta {
@@ -152,31 +150,23 @@
             justify-content: center;
             align-items: center;
             gap: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             padding-bottom: 1rem;
             border-bottom: 1px dashed var(--border-color);
         }
 
-        .hero-title {
-            font-weight: 900;
-            font-size: clamp(2.5rem, 7vw, 5.5rem);
-            line-height: 0.95;
-            letter-spacing: -0.04em;
-            text-transform: uppercase;
-            margin: 0 auto 2.5rem;
-            max-width: 1000px;
-        }
-
-        .hero-title .highlight {
-            color: var(--accent-red);
-            font-weight: 200;
-            font-style: italic;
+        /* Nuevo diseño de dos columnas para la sección principal (foto a la izquierda, texto a la derecha) */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto 3rem;
         }
 
         .hero-main-image {
             width: 100%;
-            max-width: 1100px;
-            margin: 0 auto 3rem;
             border: 1px solid var(--border-color);
             overflow: hidden;
         }
@@ -187,17 +177,30 @@
             display: block;
         }
 
-        .hero-content-centered {
-            max-width: 750px;
-            margin: 0 auto;
+        .hero-content-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2rem, 3.5vw, 3.5rem);
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
         }
 
         .hero-lead {
-            font-weight: 300;
-            font-size: 1.25rem;
-            line-height: 1.5;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400; /* Trazado más fino/normal */
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
         }
 
         .hero-lead strong {
@@ -210,6 +213,7 @@
             background-color: var(--accent-red);
             color: #fff;
             padding: 1rem 2rem;
+            font-family: 'Inter', sans-serif;
             font-weight: 600;
             font-size: 0.85rem;
             text-transform: uppercase;
@@ -219,6 +223,8 @@
             cursor: pointer;
             transition: all 0.3s;
             box-shadow: 0 4px 20px rgba(160, 9, 44, 0.3);
+            text-align: center;
+            width: fit-content;
         }
 
         .btn-primary:hover {
@@ -246,6 +252,7 @@
         }
 
         .stat-number {
+            font-family: 'Inter', sans-serif;
             font-weight: 800;
             font-size: 2.8rem;
             color: var(--text-primary);
@@ -259,6 +266,7 @@
         }
 
         .stat-label {
+            font-family: 'Inter', sans-serif;
             font-weight: 300;
             font-size: 0.85rem;
             color: var(--text-secondary);
@@ -282,6 +290,7 @@
         }
 
         .section-title {
+            font-family: 'Inter', sans-serif;
             font-weight: 800;
             font-size: 2rem;
             text-transform: uppercase;
@@ -307,6 +316,7 @@
         }
 
         .article-num {
+            font-family: 'Inter', sans-serif;
             font-weight: 100;
             font-size: 3rem;
             color: var(--accent-red);
@@ -315,6 +325,7 @@
         }
 
         .article-title {
+            font-family: 'Inter', sans-serif;
             font-weight: 700;
             font-size: 1.25rem;
             line-height: 1.3;
@@ -323,6 +334,7 @@
         }
 
         .article-excerpt {
+            font-family: 'Inter', sans-serif;
             font-weight: 300;
             font-size: 0.95rem;
             color: var(--text-secondary);
@@ -332,6 +344,7 @@
 
         .article-meta {
             margin-top: auto;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -350,6 +363,7 @@
         }
 
         .quote-text {
+            font-family: 'Inter', sans-serif;
             font-weight: 200;
             font-size: clamp(1.8rem, 4vw, 3.2rem);
             line-height: 1.25;
@@ -359,12 +373,14 @@
         }
 
         .quote-text strong {
+            font-family: 'Inter', sans-serif;
             font-weight: 800;
             color: #fff;
             background: linear-gradient(120deg, transparent 0%, rgba(160, 9, 44, 0.4) 0%);
         }
 
         .author {
+            font-family: 'Inter', sans-serif;
             font-weight: 500;
             font-size: 0.9rem;
             text-transform: uppercase;
@@ -388,6 +404,7 @@
         }
 
         .cta-title {
+            font-family: 'Inter', sans-serif;
             font-weight: 900;
             font-size: 2.5rem;
             text-transform: uppercase;
@@ -396,6 +413,7 @@
         }
 
         .cta-desc {
+            font-family: 'Inter', sans-serif;
             font-weight: 300;
             font-size: 1.05rem;
             color: var(--text-secondary);
@@ -440,12 +458,8 @@
             margin-bottom: 4rem;
         }
 
-        .footer-brand .logo {
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
-
         .footer-desc {
+            font-family: 'Inter', sans-serif;
             font-weight: 300;
             font-size: 0.85rem;
             color: var(--text-muted);
@@ -453,6 +467,7 @@
         }
 
         .footer-title {
+            font-family: 'Inter', sans-serif;
             font-weight: 700;
             font-size: 0.8rem;
             text-transform: uppercase;
@@ -470,6 +485,7 @@
         }
 
         .footer-links a {
+            font-family: 'Inter', sans-serif;
             color: var(--text-secondary);
             text-decoration: none;
             font-weight: 300;
@@ -487,6 +503,7 @@
             align-items: center;
             padding-top: 2rem;
             border-top: 1px solid var(--border-color);
+            font-family: 'Inter', sans-serif;
             font-weight: 300;
             font-size: 0.75rem;
             color: var(--text-muted);
@@ -494,6 +511,11 @@
 
         /* --- RESPONSIVE --- */
         @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
             .stats-bar {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -521,10 +543,9 @@
             }
 
             nav ul {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 15px;
+                flex-direction: row;
+                align-items: center;
+                gap: 15px;
             }
         }
     </style>
@@ -534,9 +555,9 @@
     <!-- HEADER -->
     <header>
         <div class="container header-inner">
-           <a href="#" class="logo">
-    <img src="LOGO.png" alt="Logo de Crea tu Boom" class="logo-img">
-</a>
+            <a href="#" class="logo">
+                <img src="LOGO.png" alt="Logo de Crea tu Boom" class="logo-img">
+            </a>
             <nav>
                 <ul>
                     <li><a href="http://creatuboom.com/#">Inicio</a></li>
@@ -547,27 +568,33 @@
         </div>
     </header>
 
-    <!-- HERO SECTION CENTRADA -->
+    <!-- HERO SECTION MODIFICADA: FOTO IZQUIERDA / TEXTO DERECHA -->
     <section class="hero">
         <div class="container">
             <div class="hero-meta">
                 <span class="editorial-label" style="margin-bottom: 0;">Emprendedora del Mes</span>
                 <span class="w-300" style="font-size: 0.85rem; color: var(--text-muted);">Octubre, 2026</span>
             </div>
-            <!-- IMAGEN PRINCIPAL EN GRANDE -->
-            <div class="hero-main-image">
-                <img src="emprendedorames.png" alt="Imagen principal editorial">
-            </div>
+            
+            <div class="hero-grid">
+                <!-- FOTO PRINCIPAL (A LA IZQUIERDA Y A LA MITAD DE TAMAÑO) -->
+                <div class="hero-main-image">
+                    <img src="emprendedorames.png" alt="Imagen principal editorial">
+                </div>
 
-            <!-- CONTENIDO INFERIOR CENTRADO -->
-            <div class="hero-content-centered">
-                <p class="hero-lead">
-                    Una exploración profunda sobre la intersección entre <strong>diseño radical</strong>, cultura visual y la narrativa contemporánea.
-                </p>
-                <p class="w-300" style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;">
-                    Redefinimos el periodismo visual mediante una maquetación audaz y tipografía estructurada para lectores que buscan profundidad en un mundo acelerado.
-                </p>
-                <a href="#suscripcion" class="btn-primary">Obtener la edición impresa</a>
+                <!-- CONTENIDO A LA DERECHA (TÍTULO GRUESO + DESCRIPCIÓN MÁS FINA) -->
+                <div class="hero-content-right">
+                    <h1 class="hero-title">
+                        Emprendedora <span class="w-200" style="color: var(--accent-red); font-style: italic;">Destacada</span>
+                    </h1>
+                    <p class="hero-lead">
+                        Una exploración profunda sobre la intersección entre <strong>diseño radical</strong>, cultura visual y la narrativa contemporánea.
+                    </p>
+                    <p class="w-300" style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;">
+                        Redefinimos el periodismo visual mediante una maquetación audaz y tipografía estructurada para lectores que buscan profundidad en un mundo acelerado.
+                    </p>
+                    <a href="#suscripcion" class="btn-primary">Obtener la edición impresa</a>
+                </div>
             </div>
         </div>
     </section>
@@ -644,7 +671,7 @@
             <blockquote class="quote-text">
                 "Creemos en el peso de las palabras, en el <strong>contraste absoluto</strong> entre luz y penumbra, y en el diseño que no pide perdón por exigir la atención completa del lector."
             </blockquote>
-            <p class="author">— El Consejo Editorial de NOCTURNE</p>
+            <p class="author">— El Consejo Editorial de CREATUBOOM</p>
         </div>
     </section>
 
@@ -668,7 +695,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="#" class="logo">NOCT<span>URNE</span></a>
+                    <a href="#" class="logo">CREATU<span>BOOM</span></a>
                     <p class="footer-desc">Una revista editorial independiente dedicada al arte, el diseño radical y el pensamiento contemporáneo.</p>
                 </div>
                 <div>
