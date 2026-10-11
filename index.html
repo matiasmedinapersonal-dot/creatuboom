@@ -787,63 +787,68 @@
             </div>
         </div>
     </footer>
-<script>
-      // Configuración de Sanity
-      const projectId = '0jh34002';
-      const dataset = 'production';
+    <script>
+  const projectId = '0jh34002';
+  const dataset = 'production';
+  
+  // Pedimos a Sanity todos los campos: título, slug, imagen, fecha, categorías y cuerpo
+  const query = encodeURIComponent(`*[_type == "post"] | order(publishedAt desc){
+    title,
+    "slug": slug.current,
+    "imageUrl": mainImage.asset->url,
+    publishedAt,
+    categories[]->{title},
+    author->{name},
+    body
+  }`);
+  
+  const url = `https://${projectId}.api.sanity.io/v2021-10-21/data/query/${dataset}?query=${query}`;
+
+  async function cargarArticulosDeSanity() {
+    try {
+      const respuesta = await fetch(url);
+      const resultado = await respuesta.json();
+      const posts = resultado.result;
       
-      const query = encodeURIComponent(`*[_type == "post"] | order(publishedAt desc){
-        title,
-        "slug": slug.current,
-        "imageUrl": mainImage.asset->url,
-        publishedAt,
-        body
-      }`);
-      
-      const url = `https://${projectId}.api.sanity.io/v2021-10-21/data/query/${dataset}?query=${query}`;
+      const contenedor = document.querySelector('.articles-grid');
+      if (!contenedor || !posts || posts.length === 0) return;
 
-      async function cargarArticulosDeSanity() {
-        try {
-          const respuesta = await fetch(url);
-          const resultado = await respuesta.json();
-          const posts = resultado.result;
-          
-          const contenedor = document.querySelector('.articles-grid');
-          if (!contenedor || !posts || posts.length === 0) return;
-
-          contenedor.innerHTML = posts.map((post, index) => {
-            const numeroStr = String(index + 1).padStart(2, '0');
-            const fechaFormateada = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString() : 'Reciente';
-            
-            // Extraemos exactamente el texto que pusiste en el Body de Sanity
-            let textoCuerpo = "";
-            if (post.body && Array.isArray(post.body)) {
-              const primerBloque = post.body.find(bloque => bloque._type === 'block');
-              if (primerBloque && primerBloque.children) {
-                textoCuerpo = primerBloque.children.map(child => child.text).join(' ');
-              }
-            }
-            
-            return `
-              <article class="article-card">
-                <span class="article-num">${numeroStr}</span>
-                ${post.imageUrl ? `<img src="${post.imageUrl}" alt="${post.title}" style="width:100%; height:180px; object-fit:cover; margin-bottom:1rem;">` : ''}
-                <h3 class="article-title">${post.title}</h3>
-                <p class="article-excerpt">
-                  ${textoCuerpo}
-                </p>
-                <div class="article-meta">Crea Tu Boom — ${fechaFormateada}</div>
-              </article>
-            `;
-          }).join('');
-
-        } catch (error) {
-          console.error("Error al conectar con Sanity:", error);
+      contenedor.innerHTML = posts.map((post, index) => {
+        const numeroStr = String(index + 1).padStart(2, '0');
+        const fechaFormateada = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('es-ES') : '';
+        
+        // Extraer todo el texto que escribiste en el campo Body
+        let contenidoCuerpo = "";
+        if (post.body && Array.isArray(post.body)) {
+          contenidoCuerpo = post.body
+            .filter(bloque => bloque._type === 'block' && bloque.children)
+            .map(bloque => bloque.children.map(child => child.text).join(''))
+            .join(' ');
         }
-      }
 
-      document.addEventListener('DOMContentLoaded', cargarArticulosDeSanity);
-    </script>
+        // Obtener el nombre del autor si fue seleccionado en Sanity
+        const nombreAutor = post.author && post.author.name ? post.author.name : 'Redacción';
+
+        return `
+          <article class="article-card">
+            <span class="article-num">${numeroStr}</span>
+            ${post.imageUrl ? `<img src="${post.imageUrl}" alt="${post.title}" style="width:100%; height:180px; object-fit:cover; margin-bottom:1rem;">` : ''}
+            <h3 class="article-title">${post.title || ''}</h3>
+            <p class="article-excerpt">
+              ${contenidoCuerpo}
+            </p>
+            <div class="article-meta">Por ${nombreAutor} — ${fechaFormateada}</div>
+          </article>
+        `;
+      }).join('');
+
+    } catch (error) {
+      console.error("Error al conectar con Sanity:", error);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', cargarArticulosDeSanity);
+</script>
     
 </body>
 </html>
