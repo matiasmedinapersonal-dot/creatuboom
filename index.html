@@ -126,7 +126,7 @@
             color: #000000;
             text-decoration: none;
             font-weight: 500;
-            font-size: 1,25rem;
+            font-size: 0.85rem;
             letter-spacing: 0.12em;
             text-transform: uppercase;
             transition: color 0.3s;
@@ -146,39 +146,44 @@
             display: grid;
             grid-template-columns: 2.2fr 1fr;
             gap: 2.5rem;
-            align-items: start;
+            align-items: stretch;
         }
 
         .hero-main-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
-            align-items: start;
+            align-items: stretch;
             padding-right: 2.5rem;
             border-right: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .hero-main-image {
             width: 100%;
+            height: 100%;
             overflow: hidden;
+            display: flex;
         }
 
         .hero-main-image img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             display: block;
         }
 
         .hero-content-right {
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: space-between;
+            height: 100%;
         }
 
         /* Barra lateral derecha (Artículos secundarios) */
         .hero-sidebar {
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
             gap: 2rem;
         }
 
@@ -263,7 +268,7 @@
             box-shadow: 0 6px 25px rgba(160, 9, 44, 0.5);
         }
 
-        /* --- STATS BAR (AHORA FONDO BLANCO CON TEXTO NEGRO Y LÍNEA INFERIOR) --- */
+        /* --- STATS BAR --- */
         .stats-bar {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -622,10 +627,12 @@
 
                     <!-- Contenido y botón a la derecha de la foto principal -->
                     <div class="hero-content-right">
-                        <p class="w-300" style="color: #000000; margin-bottom: 0.4rem; font-size: 0.95rem;">Emprendedora del Mes, Octubre</p>
-                        <p class="hero-lead" style="color: #000000; margin-bottom: 2.5rem;">
-                            Conoce a Camila Noemí Rios, una joven oriunda de Salta, Argentina. Con una beca bajo el brazo y cero privilegios, aceleró su carrera, rescató del olvido la lengua de una comunidad vulnerable y hoy, a su corta edad, lidera espacios para que otros jóvenes dejen de ser espectadores y pasen a diseñar su propio futuro. Entendió que el verdadero motor no es llegar solo a la meta, sino abrir el juego para que los demás también avancen.
-                        </p>
+                        <div>
+                            <p class="w-300" style="color: #000000; margin-bottom: 0.4rem; font-size: 0.95rem;">Emprendedora del Mes, Octubre</p>
+                            <p class="hero-lead" style="color: #000000; margin-bottom: 1.5rem;">
+                                Conoce a Camila Noemí Rios, una joven oriunda de Salta, Argentina. Con una beca bajo el brazo y cero privilegios, aceleró su carrera, rescató del olvido la lengua de una comunidad vulnerable y hoy, a su corta edad, lidera espacios para que otros jóvenes dejen de ser espectadores y pasen a diseñar su propio futuro. Entendió que el verdadero motor no es llegar solo a la meta, sino abrir el juego para que los demás también avancen.
+                            </p>
+                        </div>
                         <a href="#suscripcion" class="btn-primary">Lee la nota completa</a>
                     </div>
                 </div>
@@ -653,7 +660,7 @@
         </div>
     </section>
 
-    <!-- STATS / HIGHLIGHTS (AHORA EN BLANCO CON BORDES DEFINIDOS) -->
+    <!-- STATS / HIGHLIGHTS -->
     <div class="stats-bar">
         <div class="stat-item">
             <div class="stat-number">100<span>%</span></div>
