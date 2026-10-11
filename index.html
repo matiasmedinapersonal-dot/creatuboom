@@ -685,35 +685,7 @@
             </div>
 
             <div class="articles-grid">
-                <!-- Art 1 -->
-                <article class="article-card">
-                    <span class="article-num">01</span>
-                    <h3 class="article-title">Tipografía Mínima y el Impacto del Silencio Visual</h3>
-                    <p class="article-excerpt">
-                        Cómo la reducción de elementos gráficos incrementa la retención lectora y genera una respuesta emocional más intensa en publicaciones digitales e impresas.
-                    </p>
-                    <div class="article-meta">Por Elena Rostova — 8 min lectura</div>
-                </article>
-
-                <!-- Art 2 -->
-                <article class="article-card">
-                    <span class="article-num">02</span>
-                    <h3 class="article-title">El Dominio del Rojo Oscuro en la Cultura Nocturna</h3>
-                    <p class="article-excerpt">
-                        Análisis del uso del tono #a0092c como vehículo de sofisticación, elegancia y tensión dramática dentro de la moda y el arte contemporáneo.
-                    </p>
-                    <div class="article-meta">Por Marc Vance — 12 min lectura</div>
-                </article>
-
-                <!-- Art 3 -->
-                <article class="article-card">
-                    <span class="article-num">03</span>
-                    <h3 class="article-title">Arquitectura Brutalista y su Reaparición Digital</h3>
-                    <p class="article-excerpt">
-                        Del hormigón a la pantalla: la estética pesada y monolítica vuelve a dominar las interfaces de vanguardia y la dirección de arte moderna.
-                    </p>
-                    <div class="article-meta">Por Sarah Jenkins — 6 min lectura</div>
-                </article>
+                <!-- Los artículos subidos a Sanity se cargarán aquí automáticamente -->
             </div>
         </div>
     </section>
@@ -787,56 +759,56 @@
             </div>
         </div>
     </footer>
+
     <script>
-  const projectId = '0jh34002';
-  const dataset = 'production';
-  
-  // Usamos pt::text(body) para extraer directamente todo el texto del cuerpo en Sanity
-  const query = encodeURIComponent(`*[_type == "post"] | order(publishedAt desc){
-    title,
-    "slug": slug.current,
-    "imageUrl": mainImage.asset->url,
-    publishedAt,
-    author->{name},
-    "textoCuerpo": pt::text(body)
-  }`);
-  
-  const url = `https://${projectId}.api.sanity.io/v2021-10-21/data/query/${dataset}?query=${query}`;
-
-  async function cargarArticulosDeSanity() {
-    try {
-      const respuesta = await fetch(url);
-      const resultado = await respuesta.json();
-      const posts = resultado.result;
+      const projectId = '0jh34002';
+      const dataset = 'production';
       
-      const contenedor = document.querySelector('.articles-grid');
-      if (!contenedor || !posts || posts.length === 0) return;
+      // La función pt::text(body) le pide a la API de Sanity que extraiga el texto del Portable Text
+      const query = encodeURIComponent(`*[_type == "post"] | order(publishedAt desc){
+        title,
+        "slug": slug.current,
+        "imageUrl": mainImage.asset->url,
+        publishedAt,
+        author->{name},
+        "textoCuerpo": pt::text(body)
+      }`);
+      
+      const url = `https://${projectId}.api.sanity.io/v2021-10-21/data/query/${dataset}?query=${query}`;
 
-      contenedor.innerHTML = posts.map((post, index) => {
-        const numeroStr = String(index + 1).padStart(2, '0');
-        const fechaFormateada = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('es-ES') : '';
-        const nombreAutor = post.author && post.author.name ? post.author.name : 'Redacción';
+      async function cargarArticulosDeSanity() {
+        try {
+          const respuesta = await fetch(url);
+          const resultado = await respuesta.json();
+          const posts = resultado.result;
+          
+          const contenedor = document.querySelector('.articles-grid');
+          if (!contenedor || !posts || posts.length === 0) return;
 
-        return `
-          <article class="article-card">
-            <span class="article-num">${numeroStr}</span>
-            ${post.imageUrl ? `<img src="${post.imageUrl}" alt="${post.title}" style="width:100%; height:180px; object-fit:cover; margin-bottom:1rem;">` : ''}
-            <h3 class="article-title">${post.title || ''}</h3>
-            <p class="article-excerpt">
-              ${post.textoCuerpo || ''}
-            </p>
-            <div class="article-meta">Por ${nombreAutor} — ${fechaFormateada}</div>
-          </article>
-        `;
-      }).join('');
+          contenedor.innerHTML = posts.map((post, index) => {
+            const numeroStr = String(index + 1).padStart(2, '0');
+            const fechaFormateada = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('es-ES') : '';
+            const nombreAutor = post.author && post.author.name ? post.author.name : 'Redacción';
 
-    } catch (error) {
-      console.error("Error al conectar con Sanity:", error);
-    }
-  }
+            return `
+              <article class="article-card">
+                <span class="article-num">${numeroStr}</span>
+                ${post.imageUrl ? `<img src="${post.imageUrl}" alt="${post.title}" style="width:100%; height:180px; object-fit:cover; margin-bottom:1rem;">` : ''}
+                <h3 class="article-title">${post.title || ''}</h3>
+                <p class="article-excerpt">
+                  ${post.textoCuerpo || ''}
+                </p>
+                <div class="article-meta">Por ${nombreAutor} — ${fechaFormateada}</div>
+              </article>
+            `;
+          }).join('');
 
-  document.addEventListener('DOMContentLoaded', cargarArticulosDeSanity);
-</script>
-    
+        } catch (error) {
+          console.error("Error al conectar con Sanity:", error);
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', cargarArticulosDeSanity);
+    </script>
 </body>
 </html>
