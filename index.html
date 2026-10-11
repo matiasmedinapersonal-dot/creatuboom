@@ -790,11 +790,11 @@
 
     <script>
 <script>
+  <script>
   // Configuración de Sanity
   const projectId = '0jh34002';
   const dataset = 'production';
   
-  // CORRECCIÓN: El tipo de documento por defecto en tu Sanity es "post" (no "article")
   const query = encodeURIComponent(`*[_type == "post"] | order(publishedAt desc){
     title,
     "slug": slug.current,
@@ -811,13 +811,9 @@
       const resultado = await respuesta.json();
       const posts = resultado.result;
       
-      console.log("Artículos traídos desde Sanity:", posts);
-
-      // Buscamos la grilla de artículos en tu HTML
       const contenedor = document.querySelector('.articles-grid');
       if (!contenedor || !posts || posts.length === 0) return;
 
-      // Generamos las tarjetas dinámicamente respetando tu diseño editorial
       contenedor.innerHTML = posts.map((post, index) => {
         const numeroStr = String(index + 1).padStart(2, '0');
         const fechaFormateada = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString() : 'Reciente';
@@ -840,7 +836,6 @@
     }
   }
 
-  // Ejecutar al cargar la página
   document.addEventListener('DOMContentLoaded', cargarArticulosDeSanity);
 </script>
     
