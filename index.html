@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CREATUBOOM — Editorial Magazine & Journal</title>
-    <!-- Google Fonts: Inter with multiple weights -->
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -38,7 +38,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- TYPOGRAPHY UTILITIES --- */
+        /* TYPOGRAPHY UTILITIES */
         .w-100 { font-family: 'Inter', sans-serif; font-weight: 100; }
         .w-200 { font-family: 'Inter', sans-serif; font-weight: 200; }
         .w-300 { font-family: 'Inter', sans-serif; font-weight: 300; }
@@ -60,14 +60,14 @@
             margin-bottom: 0.75rem;
         }
 
-        /* --- CONTAINER --- */
+        /* CONTAINER */
         .container {
             max-width: 1300px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
-        /* --- HEADER / NAVBAR --- */
+        /* HEADER / NAVBAR */
         .editorial-header {
             width: 100%;
             background-color: #FFF;
@@ -136,7 +136,7 @@
             color: var(--accent-red);
         }
 
-        /* --- HERO SECTION --- */
+        /* HERO SECTION */
         .hero {
             padding: 3rem 0 4rem;
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -176,7 +176,7 @@
             align-self: stretch;
         }
 
-        /* Barra lateral derecha (Artículos secundarios) */
+        /* BARRA LATERAL DERECHA */
         .hero-sidebar {
             display: flex;
             flex-direction: column;
@@ -265,7 +265,7 @@
             box-shadow: 0 6px 25px rgba(160, 9, 44, 0.5);
         }
 
-        /* --- STATS BAR --- */
+        /* STATS BAR */
         .stats-bar {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -306,7 +306,7 @@
             letter-spacing: 0.1em;
         }
 
-        /* --- EDITORIAL ARTICLES GRID --- */
+        /* EDITORIAL ARTICLES GRID */
         .editorial-section {
             padding: 6rem 0;
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -384,7 +384,7 @@
             color: var(--text-muted);
         }
 
-        /* --- FEATURED QUOTE / MANIFESTO --- */
+        /* MANIFESTO */
         .manifesto {
             padding: 8rem 0;
             background-color: var(--bg-surface);
@@ -420,7 +420,7 @@
             color: var(--accent-red);
         }
 
-        /* --- NEWSLETTER / CTA --- */
+        /* CALL TO ACTION / NEWSLETTER */
         .cta-section {
             padding: 7rem 0;
             text-align: center;
@@ -449,3 +449,365 @@
             font-weight: 300;
             font-size: 1.05rem;
             color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-form {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .cta-input {
+            flex: 1;
+            background-color: #FFFFFF;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            padding: 1rem 1.25rem;
+            color: #000;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .cta-input:focus {
+            border-color: var(--accent-red);
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 4rem 0 2rem;
+            background-color: #FFFFFF;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-desc {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            max-width: 300px;
+        }
+
+        .footer-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 300;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-red);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .hero-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-main-content {
+                border-right: none;
+                padding-right: 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                padding-bottom: 2rem;
+            }
+
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-bar {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-form {
+                flex-direction: column;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-nav-row ul {
+                flex-direction: row;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="editorial-header">
+        <div class="header-logo-row">
+            <a href="#" class="logo">
+                <img src="LOGOROJO.png" alt="Logo de Crea tu Boom" class="logo-img">
+            </a>
+        </div>
+        <nav class="header-nav-row">
+            <ul>
+                <li><a href="http://creatuboom.com/#">Inicio</a></li>
+                <li><a href="#nosotros">Somos Crea tu Boom</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-layout">
+                
+                <!-- COLUMNA IZQUIERDA: NOTA PRINCIPAL -->
+                <div class="hero-main-content">
+                    <div class="hero-main-image">
+                        <img src="emprendedorames.png" alt="Imagen principal editorial">
+                    </div>
+
+                    <div class="hero-content-right">
+                        <div>
+                            <p class="w-300" style="color: #000000; margin-bottom: 0.4rem; font-size: 0.95rem;">Emprendedora del Mes, Octubre</p>
+                            <p class="hero-lead" style="color: #000000; margin-bottom: 1.5rem;">
+                                Conoce a Camila Noemí Rios, una joven oriunda de Salta, Argentina. Con una beca bajo el brazo y cero privilegios, aceleró su carrera, rescató del olvido la lengua de una comunidad vulnerable y hoy, a su corta edad, lidera espacios para que otros jóvenes dejen de ser espectadores y pasen a diseñar su propio futuro. Entendió que el verdadero motor no es llegar solo a la meta, sino abrir el juego para que los demás también avancen.
+                            </p>
+                        </div>
+                        <a href="#suscripcion" class="btn-primary">Lee la nota completa</a>
+                    </div>
+                </div>
+
+                <!-- COLUMNA DERECHA: ARTÍCULOS SECUNDARIOS -->
+                <aside class="hero-sidebar">
+                    <article class="sidebar-card">
+                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600&auto=format&fit=crop" alt="Artículo secundario" class="sidebar-card-img">
+                        <span class="sidebar-category">Negocios</span>
+                        <a href="#" class="sidebar-title">El impacto de la innovación joven en el desarrollo regional</a>
+                        <p class="sidebar-author">Por <strong>Carlos Mendoza</strong>, Redactor</p>
+                    </article>
+
+                    <article class="sidebar-card">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=600&auto=format&fit=crop" alt="Artículo secundario" class="sidebar-card-img">
+                        <span class="sidebar-category">Comunidad</span>
+                        <a href="#" class="sidebar-title">Nuevos programas de becas impulsan el talento universitario</a>
+                        <p class="sidebar-author">Por <strong>Elena Rostova</strong>, Colaboradora</p>
+                    </article>
+                </aside>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-number">100<span>%</span></div>
+            <div class="stat-label">Contenido Independiente</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">240<span>p</span></div>
+            <div class="stat-label">Páginas por Volumen</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">12<span>k</span></div>
+            <div class="stat-label">Suscriptores Globales</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">00<span>4</span></div>
+            <div class="stat-label">Número de Edición</div>
+        </div>
+    </div>
+
+    <!-- ARTICLES GRID -->
+    <section class="editorial-section" id="articulos">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <span class="editorial-label">Lecturas Destacadas</span>
+                    <h2 class="section-title">Contenido del Volumen</h2>
+                </div>
+                <span class="w-300" style="color: var(--text-muted); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em;">Selección de ensayos</span>
+            </div>
+
+            <div class="articles-grid">
+                <!-- Artículos desde Sanity -->
+            </div>
+        </div>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section class="manifesto" id="manifiesto">
+        <div class="container">
+            <span class="editorial-label">Nuestro Manifiesto</span>
+            <blockquote class="quote-text">
+                "Creemos en el peso de las palabras, en el <strong>contraste absoluto</strong> entre luz y penumbra, y en el diseño que no pide perdón por exigir la atención completa del lector."
+            </blockquote>
+            <p class="author">— El Consejo Editorial de CREATUBOOM</p>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER / CTA -->
+    <section class="cta-section" id="suscripcion">
+        <div class="container">
+            <div class="cta-box">
+                <span class="editorial-label">Acceso Exclusivo</span>
+                <h2 class="cta-title">Únete a la Lectura</h2>
+                <p class="cta-desc">Recibe semanalmente ensayos breves, crónicas visuales y acceso prioritario a la edición física limitada.</p>
+                <form class="cta-form" onsubmit="event.preventDefault();">
+                    <input type="email" class="cta-input" placeholder="Tu correo electrónico..." required>
+                    <button type="submit" class="btn-primary">Suscribirse</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">CREATU<span>BOOM</span></a>
+                    <p class="footer-desc">Una revista editorial independiente dedicada al arte, el diseño radical y el pensamiento contemporáneo.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Ediciones</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Volumen 04 (Actual)</a></li>
+                        <li><a href="#">Volumen 03</a></li>
+                        <li><a href="#">Volumen 02</a></li>
+                        <li><a href="#">Archivo Digital</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Editorial</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Sobre nosotros</a></li>
+                        <li><a href="#">Manifiesto</a></li>
+                        <li><a href="#">Colaboradores</a></li>
+                        <li><a href="#">Puntos de venta</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Redes</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter / X</a></li>
+                        <li><a href="#">Substack</a></li>
+                        <li><a href="#">Are.na</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Crea tu Boom. Todos los derechos reservados.</p>
+                <p>Diseñado por y para emprendedores.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+      const projectId = '0jh34002';
+      const dataset = 'production';
+      
+      const query = encodeURIComponent(`*[_type == "post"] | order(publishedAt desc){
+        title,
+        "slug": slug.current,
+        "imageUrl": mainImage.asset->url,
+        publishedAt,
+        author->{name},
+        "textoCuerpo": pt::text(body)
+      }`);
+      
+      const url = `https://${projectId}.api.sanity.io/v2021-10-21/data/query/${dataset}?query=${query}`;
+
+      async function cargarArticulosDeSanity() {
+        try {
+          const respuesta = await fetch(url);
+          const resultado = await respuesta.json();
+          const posts = resultado.result;
+          
+          const contenedor = document.querySelector('.articles-grid');
+          if (!contenedor || !posts || posts.length === 0) return;
+
+          contenedor.innerHTML = posts.map((post, index) => {
+            const numeroStr = String(index + 1).padStart(2, '0');
+            const fechaFormateada = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('es-ES') : '';
+            const nombreAutor = post.author && post.author.name ? post.author.name : 'Redacción';
+
+            return `
+              <article class="article-card">
+                <span class="article-num">${numeroStr}</span>
+                ${post.imageUrl ? `<img src="${post.imageUrl}" alt="${post.title}" style="width:100%; height:180px; object-fit:cover; margin-bottom:1rem;">` : ''}
+                <h3 class="article-title">${post.title || ''}</h3>
+                <p class="article-excerpt">
+                  ${post.textoCuerpo || ''}
+                </p>
+                <div class="article-meta">Por ${nombreAutor} — ${fechaFormateada}</div>
+              </article>
+            `;
+          }).join('');
+
+        } catch (error) {
+          console.error("Error al conectar con Sanity:", error);
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', cargarArticulosDeSanity);
+    </script>
+</body>
+</html>
