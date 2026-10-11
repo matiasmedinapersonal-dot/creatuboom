@@ -11,8 +11,8 @@
     <style>
         :root {
             --bg-black: #FFFFFF;
-            --bg-surface: #121212;
-            --bg-card: #181818;
+            --bg-surface: #FFFFFF;
+            --bg-card: #FFFFFF;
             --accent-red: #a0092c;
             --accent-red-hover: #b80c34;
             --accent-red-light: rgba(160, 9, 44, 0.15);
@@ -139,7 +139,7 @@
         /* --- HERO SECTION --- */
         .hero {
             padding: 3rem 0 4rem;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .hero-layout {
@@ -263,17 +263,17 @@
             box-shadow: 0 6px 25px rgba(160, 9, 44, 0.5);
         }
 
-        /* --- STATS BAR --- */
+        /* --- STATS BAR (AHORA FONDO BLANCO CON TEXTO NEGRO Y LÍNEA INFERIOR) --- */
         .stats-bar {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            border-bottom: 1px solid var(--border-color);
-            background-color: var(--bg-surface);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: #FFFFFF;
         }
 
         .stat-item {
             padding: 2.5rem 2rem;
-            border-right: 1px solid var(--border-color);
+            border-right: 1px solid rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
@@ -285,7 +285,7 @@
             font-family: 'Inter', sans-serif;
             font-weight: 800;
             font-size: 2.8rem;
-            color: var(--text-primary);
+            color: #000000;
             line-height: 1;
             margin-bottom: 0.5rem;
             letter-spacing: -0.03em;
@@ -297,9 +297,9 @@
 
         .stat-label {
             font-family: 'Inter', sans-serif;
-            font-weight: 300;
+            font-weight: 400;
             font-size: 0.85rem;
-            color: var(--text-secondary);
+            color: #555555;
             text-transform: uppercase;
             letter-spacing: 0.1em;
         }
@@ -307,7 +307,7 @@
         /* --- EDITORIAL ARTICLES GRID --- */
         .editorial-section {
             padding: 6rem 0;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .section-header {
@@ -315,7 +315,7 @@
             justify-content: space-between;
             align-items: flex-end;
             margin-bottom: 3rem;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             padding-bottom: 1rem;
         }
 
@@ -386,7 +386,7 @@
         .manifesto {
             padding: 8rem 0;
             background-color: var(--bg-surface);
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
             text-align: center;
@@ -405,7 +405,7 @@
         .quote-text strong {
             font-family: 'Inter', sans-serif;
             font-weight: 800;
-            color: #fff;
+            color: #000;
             background: linear-gradient(120deg, transparent 0%, rgba(160, 9, 44, 0.4) 0%);
         }
 
@@ -427,10 +427,10 @@
         .cta-box {
             max-width: 700px;
             margin: 0 auto;
-            background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-black) 100%);
+            background: #FFFFFF;
             border: 1px solid var(--border-red);
             padding: 4rem 3rem;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
         .cta-title {
@@ -459,10 +459,10 @@
 
         .cta-input {
             flex: 1;
-            background-color: var(--bg-black);
-            border: 1px solid var(--border-color);
+            background-color: #FFFFFF;
+            border: 1px solid rgba(0, 0, 0, 0.2);
             padding: 1rem 1.25rem;
-            color: #fff;
+            color: #000;
             font-family: 'Inter', sans-serif;
             font-weight: 300;
             font-size: 0.9rem;
@@ -476,9 +476,9 @@
 
         /* --- FOOTER --- */
         footer {
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
             padding: 4rem 0 2rem;
-            background-color: var(--bg-black);
+            background-color: #FFFFFF;
         }
 
         .footer-grid {
@@ -532,7 +532,7 @@
             justify-content: space-between;
             align-items: center;
             padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
             font-family: 'Inter', sans-serif;
             font-weight: 300;
             font-size: 0.75rem;
@@ -653,7 +653,7 @@
         </div>
     </section>
 
-    <!-- STATS / HIGHLIGHTS -->
+    <!-- STATS / HIGHLIGHTS (AHORA EN BLANCO CON BORDES DEFINIDOS) -->
     <div class="stats-bar">
         <div class="stat-item">
             <div class="stat-number">100<span>%</span></div>
@@ -764,7 +764,6 @@
       const projectId = '0jh34002';
       const dataset = 'production';
       
-      // La función pt::text(body) le pide a la API de Sanity que extraiga el texto del Portable Text
       const query = encodeURIComponent(`*[_type == "post"] | order(publishedAt desc){
         title,
         "slug": slug.current,
