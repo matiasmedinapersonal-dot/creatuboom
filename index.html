@@ -791,15 +791,14 @@
   const projectId = '0jh34002';
   const dataset = 'production';
   
-  // Pedimos a Sanity todos los campos: título, slug, imagen, fecha, categorías y cuerpo
+  // Usamos pt::text(body) para extraer directamente todo el texto del cuerpo en Sanity
   const query = encodeURIComponent(`*[_type == "post"] | order(publishedAt desc){
     title,
     "slug": slug.current,
     "imageUrl": mainImage.asset->url,
     publishedAt,
-    categories[]->{title},
     author->{name},
-    body
+    "textoCuerpo": pt::text(body)
   }`);
   
   const url = `https://${projectId}.api.sanity.io/v2021-10-21/data/query/${dataset}?query=${query}`;
@@ -816,17 +815,6 @@
       contenedor.innerHTML = posts.map((post, index) => {
         const numeroStr = String(index + 1).padStart(2, '0');
         const fechaFormateada = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('es-ES') : '';
-        
-        // Extraer todo el texto que escribiste en el campo Body
-        let contenidoCuerpo = "";
-        if (post.body && Array.isArray(post.body)) {
-          contenidoCuerpo = post.body
-            .filter(bloque => bloque._type === 'block' && bloque.children)
-            .map(bloque => bloque.children.map(child => child.text).join(''))
-            .join(' ');
-        }
-
-        // Obtener el nombre del autor si fue seleccionado en Sanity
         const nombreAutor = post.author && post.author.name ? post.author.name : 'Redacción';
 
         return `
@@ -835,7 +823,7 @@
             ${post.imageUrl ? `<img src="${post.imageUrl}" alt="${post.title}" style="width:100%; height:180px; object-fit:cover; margin-bottom:1rem;">` : ''}
             <h3 class="article-title">${post.title || ''}</h3>
             <p class="article-excerpt">
-              ${contenidoCuerpo}
+              ${post.textoCuerpo || ''}
             </p>
             <div class="article-meta">Por ${nombreAutor} — ${fechaFormateada}</div>
           </article>
