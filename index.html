@@ -788,5 +788,31 @@
         </div>
     </footer>
 
+    <script>
+  // ID de tu proyecto de Sanity
+  const projectId = '0jh34002';
+  const dataset = 'production';
+  
+  // Consulta para pedir todos los artículos a Sanity
+  const query = encodeURIComponent('*[_type == "article"]');
+  const url = `https://${projectId}.api.sanity.io/v2021-10-21/data/query/${dataset}?query=${query}`;
+
+  // Función para ir a buscar los datos
+  async function cargarArticulosDeSanity() {
+    try {
+      const respuesta = await fetch(url);
+      const resultado = await respuesta.json();
+      console.log("Artículos traídos desde Sanity:", resultado.result);
+      
+      // Aquí más adelante conectaremos los datos con tus elementos HTML (títulos, imágenes, etc.)
+    } catch (error) {
+      console.error("Error al conectar con Sanity:", error);
+    }
+  }
+
+  // Ejecutar la función al cargar la página
+  cargarArticulosDeSanity();
+</script>
+    
 </body>
 </html>
