@@ -9,6 +9,90 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* AJUSTES EXCLUSIVOS PARA MÓVIL (No afecta a la versión PC) */
+        @media (max-width: 768px) {
+            .header-container {
+                display: flex !important;
+                flex-direction: column !important;
+                padding: 0 !important;
+            }
+
+            /* 1. Cinta deslizante arriba a ancho completo */
+            .top-bar-ticker {
+                width: 100% !important;
+                padding: 8px 0 !important;
+                margin: 0 !important;
+            }
+
+            .ticker-item span {
+                font-size: 0.7rem !important; /* Texto más pequeño para celular */
+                padding: 0 10px !important;
+            }
+
+            /* 2. Primera línea gris separadora */
+            .linea-header-top {
+                width: 100% !important;
+                height: 1px !important;
+                background-color: #e5e5e5 !important;
+                margin: 0 !important;
+            }
+
+            /* 3. Fila del Logo (Izquierda) y Botón Hamburguesa (Derecha) */
+            .header-logo-row {
+                width: 100% !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                padding: 12px 20px !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important; /* Segunda línea gris separadora */
+            }
+
+            .logo-img {
+                width: 90px !important;
+                margin: 0 !important;
+            }
+
+            .mobile-menu-toggle {
+                display: flex !important;
+                position: static !important;
+                padding: 5px !important;
+            }
+
+            /* 4. Corrección de la Sección Hero (Foto + Texto en 1 sola columna ocupando ancho completo) */
+            .hero-main-content {
+                display: flex !important;
+                flex-direction: column !important;
+                grid-template-columns: none !important;
+                gap: 1.5rem !important;
+                padding-right: 0 !important;
+                border-right: none !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+                padding-bottom: 2rem !important;
+                width: 100% !important;
+            }
+
+            .hero-main-image {
+                width: 100% !important;
+            }
+
+            .hero-main-image img {
+                width: 100% !important;
+                height: auto !important;
+                display: block !important;
+                object-fit: cover !important;
+            }
+
+            .hero-content-right {
+                width: 100% !important;
+            }
+
+            .btn-primary {
+                width: 100% !important; /* El botón ocupa el ancho completo para verse ordenado */
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -16,41 +100,41 @@
     <header class="editorial-header">
         <div class="header-container">
 
-<!-- CINTA DE TEXTO DESLIZANTE (TICKER) -->
-        <div class="top-bar-ticker">
-            <div class="ticker-track">
-                <!-- Grupo 1 -->
-                <div class="ticker-item">
-                    <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
-                    <span class="punto-en-vivo-ticker"></span>
-                    <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
-                    <span class="punto-en-vivo-ticker"></span>
-                </div>
-                <!-- Grupo 2 (Duplicado para loop continuo) -->
-                <div class="ticker-item">
-                    <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
-                    <span class="punto-en-vivo-ticker"></span>
-                    <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
-                    <span class="punto-en-vivo-ticker"></span>
+            <!-- CINTA DE TEXTO DESLIZANTE (TICKER) -->
+            <div class="top-bar-ticker">
+                <div class="ticker-track">
+                    <!-- Grupo 1 -->
+                    <div class="ticker-item">
+                        <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
+                        <span class="punto-en-vivo-ticker"></span>
+                        <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
+                        <span class="punto-en-vivo-ticker"></span>
+                    </div>
+                    <!-- Grupo 2 (Duplicado para loop continuo) -->
+                    <div class="ticker-item">
+                        <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
+                        <span class="punto-en-vivo-ticker"></span>
+                        <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
+                        <span class="punto-en-vivo-ticker"></span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- LÍNEA SEPARADORA SUPERIOR -->
-        <div class="linea-header-top"></div> 
+            <!-- LÍNEA SEPARADORA SUPERIOR -->
+            <div class="linea-header-top"></div> 
 
             <div class="header-logo-row">
                 <a href="#" class="logo">
                     <img src="LOGOROJO.png" alt="Logo de Crea tu Boom" class="logo-img">
                 </a>
+                
+                <!-- Botón de tres rayas para celular -->
+                <button class="mobile-menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-
-            <!-- Botón de tres rayas para celular -->
-            <button class="mobile-menu-toggle" id="menuToggle" aria-label="Abrir menú">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
 
             <!-- Menú de navegación -->
             <nav class="header-nav-row" id="mobileNav">
