@@ -48,10 +48,15 @@
                 padding: 12px 20px !important;
                 border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important; /* Segunda línea gris separadora */
             }
-           .punto-en-vivo-ticker {
-           width: 14px !important;       /* Cambia el ancho en celular */
-           height: 10px !important;      /* Cambia el alto en celular */
-           border-radius: 80% !important; /* Cambia la curvatura en celular */
+        .punto-en-vivo-ticker {
+        width: 20px !important;       /* Hazlo más ancho aquí */
+        height: 10px !important;      /* Hazlo más bajo aquí */
+        min-width: 20px !important;   /* Forzamos el ancho mínimo */
+        max-height: 10px !important;  /* Forzamos la altura máxima */
+        border-radius: 50px !important; /* Mantiene los bordes suavemente redondeados */
+    }
+
+}
 }
             .logo-img {
                 width: 90px !important;
