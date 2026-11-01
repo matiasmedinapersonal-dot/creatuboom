@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CREATUBOOM - Contacto</title>
+    <title>CREA TU BOOM - Contacto</title>
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +11,72 @@
     <link rel="stylesheet" href="style.css">
     
     <style>
+        /* AJUSTES EXCLUSIVOS PARA MÓVIL (No afecta a la versión PC) */
+        @media (max-width: 768px) {
+            .header-container {
+                display: flex !important;
+                flex-direction: column !important;
+                padding: 0 !important;
+            }
+
+            /* 1. Cinta deslizante arriba a ancho completo */
+            .top-bar-ticker {
+                width: 100% !important;
+                padding: 8px 0 !important;
+                margin: 0 !important;
+            }
+
+            .ticker-item span {
+                font-size: 0.4rem !important; /* Texto más pequeño para celular */
+                padding: 0 10px !important;
+            }
+
+            /* 2. Primera línea gris separadora */
+            .linea-header-top {
+                width: 100% !important;
+                height: 1px !important;
+                background-color: #e5e5e5 !important;
+                margin: 0 !important;
+            }
+
+            /* 3. Fila del Logo (Izquierda) y Botón Hamburguesa (Derecha) */
+            .header-logo-row {
+                width: 100% !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                padding: 12px 20px !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important; /* Segunda línea gris separadora */
+            }
+
+            /* Imagen del óvalo aplicada exclusivamente para celular en el ticker */
+            .punto-en-vivo-ticker {
+                display: inline-block !important;
+                width: 25px !important;              /* Ajusta el ancho según tu imagen */
+                height: 12px !important;             /* Ajusta el alto según tu imagen */
+                background-image: url('ovalo.png') !important;
+                background-size: contain !important;
+                background-repeat: no-repeat !important;
+                background-position: center !important;
+                background-color: transparent !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                min-width: unset !important;
+                max-height: unset !important;
+            }
+
+            .logo-img {
+                width: 90px !important;
+                margin: 0 !important;
+            }
+
+            .mobile-menu-toggle {
+                display: flex !important;
+                position: static !important;
+                padding: 5px !important;
+            }
+        }
+
         /* Estilos específicos para la sección de Contacto */
         .contact-section {
             padding: 60px 20px 80px;
@@ -166,14 +232,14 @@
                 <a href="index.html" class="logo">
                     <img src="LOGOROJO.png" alt="Logo de Crea tu Boom" class="logo-img">
                 </a>
-            </div>
 
-            <!-- Botón de tres rayas para celular -->
-            <button class="mobile-menu-toggle" id="menuToggle" aria-label="Abrir menú">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+                <!-- Botón de tres rayas para celular -->
+                <button class="mobile-menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
 
             <!-- Menú de navegación -->
             <nav class="header-nav-row" id="mobileNav">
@@ -193,8 +259,8 @@
             <p class="contact-subtitle">¿Tienes alguna consulta, propuesta o quieres colaborar con nosotros? Completa el formulario a continuación y nos pondremos en contacto contigo.</p>
         </div>
 
-<form class="contact-form" action="https://formspree.io/f/xkjoarlk" method="POST">
-                <div class="form-row">
+        <form class="contact-form" action="https://formspree.io/f/xkjoarlk" method="POST">
+            <div class="form-row">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
                     <input type="text" id="nombre" name="Nombre" placeholder="Tu nombre" required>
@@ -222,12 +288,13 @@
             </div>
 
             <!-- BOTÓN ELÍPTICO -->
-                                <button type="submit"
-   style="display: block; width: 20%; margin: 0 auto; text-align: center; background-color: #a0092c; color: #ffffff; text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.55rem 1rem; border-radius: 50% / 100%; font-family: 'Inter', sans-serif; transition: all 0.2s ease; box-shadow: 0 4px 10px rgba(198, 42, 47, 0.3); border: none; cursor: pointer;"
-   onmouseover="this.style.backgroundColor='#a0092c'; this.style.transform='scale(1.02)';"
-   onmouseout="this.style.backgroundColor='#a0092c'; this.style.transform='scale(1)';">
-   Enviar mensaje
-</button>
+            <div class="btn-submit-container">
+                <button type="submit"
+                   style="display: block; width: 20%; margin: 0 auto; text-align: center; background-color: #a0092c; color: #ffffff; text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.55rem 1rem; border-radius: 50% / 100%; font-family: 'Inter', sans-serif; transition: all 0.2s ease; box-shadow: 0 4px 10px rgba(198, 42, 47, 0.3); border: none; cursor: pointer;"
+                   onmouseover="this.style.backgroundColor='#a0092c'; this.style.transform='scale(1.02)';"
+                   onmouseout="this.style.backgroundColor='#a0092c'; this.style.transform='scale(1)';">
+                   Enviar mensaje
+                </button>
             </div>
         </form>
     </main>
