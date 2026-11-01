@@ -11,6 +11,72 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
+        /* AJUSTES EXCLUSIVOS PARA MÓVIL (No afecta a la versión PC) */
+        @media (max-width: 768px) {
+            .header-container {
+                display: flex !important;
+                flex-direction: column !important;
+                padding: 0 !important;
+            }
+
+            /* 1. Cinta deslizante arriba a ancho completo */
+            .top-bar-ticker {
+                width: 100% !important;
+                padding: 8px 0 !important;
+                margin: 0 !important;
+            }
+
+            .ticker-item span {
+                font-size: 0.4rem !important; /* Texto más pequeño para celular */
+                padding: 0 10px !important;
+            }
+
+            /* 2. Primera línea gris separadora */
+            .linea-header-top {
+                width: 100% !important;
+                height: 1px !important;
+                background-color: #e5e5e5 !important;
+                margin: 0 !important;
+            }
+
+            /* 3. Fila del Logo (Izquierda) y Botón Hamburguesa (Derecha) */
+            .header-logo-row {
+                width: 100% !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                padding: 12px 20px !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important; /* Segunda línea gris separadora */
+            }
+
+            /* Imagen del óvalo aplicada exclusivamente para celular en el ticker */
+            .punto-en-vivo-ticker {
+                display: inline-block !important;
+                width: 25px !important;              /* Ajusta el ancho según tu imagen */
+                height: 12px !important;             /* Ajusta el alto según tu imagen */
+                background-image: url('ovalo.png') !important;
+                background-size: contain !important;
+                background-repeat: no-repeat !important;
+                background-position: center !important;
+                background-color: transparent !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                min-width: unset !important;
+                max-height: unset !important;
+            }
+
+            .logo-img {
+                width: 90px !important;
+                margin: 0 !important;
+            }
+
+            .mobile-menu-toggle {
+                display: flex !important;
+                position: static !important;
+                padding: 5px !important;
+            }
+        }
+
         /* Estilos específicos adaptados usando la clase container global */
         .somos-hero {
             padding: 70px 0 50px;
@@ -208,13 +274,13 @@
                 <a href="index.html" class="logo">
                     <img src="LOGOROJO.png" alt="Logo de Crea tu Boom" class="logo-img">
                 </a>
-            </div>
 
-            <button class="mobile-menu-toggle" id="menuToggle" aria-label="Abrir menú">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+                <button class="mobile-menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
 
             <nav class="header-nav-row" id="mobileNav">
                 <ul>
@@ -262,8 +328,7 @@
                 </div>
             </div>
         </section>
-
-
+    </main>
 
     <!-- FOOTER -->
     <footer class="site-footer">
