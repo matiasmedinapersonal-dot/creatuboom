@@ -1,191 +1,286 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <link rel="icon" href="LOGOROJO.png" type="image/png">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CREATUBOOM — Próximamente</title>
-  <!-- Fuente Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden; /* Evita que se pueda deslizar o hacer scroll */
-      background-color: #ffffff;
-      font-family: 'Inter', sans-serif;
-      color: #0d0d0d;
-    }
-
-    .container {
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    /* Logo centrado */
-    .logo-container {
-      margin-bottom: 24px;
-    }
-
-    .logo-img {
-      height: 60px; /* Ajusta la altura de tu logo según prefieras */
-      width: auto;
-      display: block;
-    }
-
-    /* Línea divisoria gris como la de tu diseño */
-    .divider-line {
-      width: 100%;
-      max-width: 800px;
-      height: 1px;
-      background-color: #e5e5e5;
-      margin-bottom: 32px;
-    }
-
-    /* Mensaje principal con estilo de menú (Inter, Mayúsculas, espaciado) */
-    .message {
-      font-size: 0.95rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #0d0d0d;
-      margin-bottom: 36px;
-      text-align: center;
-    }
-
-    /* Estilo del Contador */
-    .countdown-grid {
-      display: flex;
-      gap: 24px;
-      text-align: center;
-    }
-
-    .countdown-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-width: 60px;
-    }
-
-    .number {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: #0d0d0d;
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-
-    .label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: #777777;
-    }
-
-    /* Adaptación para pantallas pequeñas / celulares */
-    @media (max-width: 480px) {
-      .logo-img {
-        height: 48px;
-      }
-      .message {
-        font-size: 0.85rem;
-        letter-spacing: 1.5px;
-      }
-      .countdown-grid {
-        gap: 14px;
-      }
-      .number {
-        font-size: 1.75rem;
-      }
-      .label {
-        font-size: 0.65rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CREATUBOOM</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
-    <!-- Logo -->
-    <div class="logo-container">
-      <img src="LOGOROJO.png" alt="Logo Crea Tu Boom" class="logo-img">
+    <!-- HEADER STYLE EN MÓVIL / TRADICIONAL EN ORDENADOR -->
+    <header class="editorial-header">
+        <div class="header-container">
+
+<!-- CINTA DE TEXTO DESLIZANTE (TICKER) -->
+        <div class="top-bar-ticker">
+            <div class="ticker-track">
+                <!-- Grupo 1 -->
+                <div class="ticker-item">
+                    <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
+                    <span class="punto-en-vivo-ticker"></span>
+                    <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
+                    <span class="punto-en-vivo-ticker"></span>
+                </div>
+                <!-- Grupo 2 (Duplicado para loop continuo) -->
+                <div class="ticker-item">
+                    <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
+                    <span class="punto-en-vivo-ticker"></span>
+                    <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
+                    <span class="punto-en-vivo-ticker"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- LÍNEA SEPARADORA SUPERIOR -->
+        <div class="linea-header-top"></div> 
+
+            <div class="header-logo-row">
+                <a href="#" class="logo">
+                    <img src="LOGOROJO.png" alt="Logo de Crea tu Boom" class="logo-img">
+                </a>
+            </div>
+
+            <!-- Botón de tres rayas para celular -->
+            <button class="mobile-menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Menú de navegación -->
+            <nav class="header-nav-row" id="mobileNav">
+                <ul>
+                    <li><a href="http://creatuboom.com/#">INICIO</a></li>
+                    <li><a href="somoscreatuboom.html">SOMOS CREA TU BOOM</a></li>
+                    <li><a href="contacto.html">CONTACTO</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-layout">
+            
+            <!-- COLUMNA 1: NOTA PRINCIPAL (Foto + Texto) -->
+            <div class="hero-main-content">
+                <div class="hero-main-image">
+                    <img src="emprendedorames.png" alt="Imagen principal editorial">
+                </div>
+                <div class="hero-content-right">
+                    <div>
+                        <p class="w-300" style="color: #000000; margin-bottom: 0.4rem; font-size: 0.7rem;">Emprendedora del Mes, Octubre</p>
+                        <p class="hero-lead" style="color: #000000; margin-bottom: 1rem; font-size: 0.8rem">
+                            Conoce a Camila Noemí Rios, una joven oriunda de Salta, Argentina. Con una beca bajo el brazo y cero privilegios, aceleró su carrera, rescató del olvido la lengua de una comunidad vulnerable y hoy, a su corta edad, lidera espacios para que otros jóvenes dejen de ser espectadores y pasen a diseñar su propio futuro. Entendió que el verdadero motor no es llegar solo a la meta, sino abrir el juego para que los demás también avancen.
+                        </p>
+                    </div>
+                    <a href="#suscripcion" class="btn-primary">Lee la nota completa</a>
+                </div>
+            </div>
+
+            <!-- COLUMNA 2: INFORMES (Con su línea divisoria a la derecha) -->
+            <aside class="hero-sidebar">
+                <article class="sidebar-card">
+                    <img src="lamujercomoemprendedora.jpg" alt="Artículo secundario" class="sidebar-card-img">
+                    <span class="sidebar-category">INFORMES</span>
+                    <a href="https://www.instagram.com/p/DVGs3_bjgsL/" class="sidebar-title">La importancia de la mujer como emprendedora en Lationamerica y España</a>
+                    <p class="sidebar-author">Por <strong>Crea tu Boom</strong>, Redactor</p>
+                </article>
+
+                <article class="sidebar-card">
+                    <img src="emprenderenlatinoamerica.jpg" alt="Artículo secundario" class="sidebar-card-img">
+                    <span class="sidebar-category">INFORMES</span>
+                    <a href="https://www.instagram.com/p/DTskVDOgOlN/" class="sidebar-title">En Latinoamérica, emprender muchas veces no es una elección, sino una necesidad</a>
+                    <p class="sidebar-author">Por <strong>Crea tu Boom</strong>, Redactor</p>
+                </article>
+            </aside>
+
+            <!-- COLUMNA 3: ÚLTIMAS NOTICIAS (En vivo) -->
+            <div class="news-column">
+                <div class="news-header">
+                    <span class="live-dot"></span>
+                    <h3 class="news-title">ÚLTIMAS NOTICIAS</h3>
+                </div>
+
+                <div class="news-list">
+                    <article class="news-item">
+                        <span class="news-category">ACTUALIDAD</span>
+                        <h4 class="news-item-title">
+                            <a href="https://www.instagram.com/p/DUvhgDbDqH3/">Emprender suele empezar desde la emoción. Como toda buena historia de amor.</a>
+                        </h4>
+                        <p class="news-author">Por <span>Crea tu Boom y Pluma Creativa</span>, Redactores</p>
+                    </article>
+
+                    <article class="news-item">
+                        <span class="news-category">IDENTIDAD DE MARCA</span>
+                        <h4 class="news-item-title">
+                            <a href="https://www.instagram.com/p/DQUSTvajuwR/">Identidad Visual y Registro de Marca: Pilares Estratégicos para Emprendedores.</a>
+                        </h4>
+                        <p class="news-author">Por <span>Crea tu Boom</span>, Redactor</p>
+                    </article>
+                    <article class="news-item">
+                        <span class="news-category">EMPRENDIMIENTO</span>
+                        <h4 class="news-item-title">
+                            <a href="https://www.instagram.com/p/DQCRgWAjnlU/">Solo el 6% de la inversión total llega a emprendedora mujeres.</a>
+                        </h4>
+                        <p class="news-author">Por <span>Crea tu Boom</span>, Redactor</p>
+                    </article>
+                    <article class="news-item">
+                        <span class="news-category">EMPRENDIMIENTO</span>
+                        <h4 class="news-item-title">
+                            <a href="https://www.instagram.com/p/DNOBq98ucyN/">Seguir tendencias no está mal, pero no dejes que tu marca se vuelva genérica.</a>
+                        </h4>
+                        <p class="news-author">Por <span>Crea tu Boom y Cande Belluccini</span>, Redactores</p>
+                    </article>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-number">100<span>%</span></div>
+            <div class="stat-label">Contenido Independiente</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">+3000<span></div>
+            <div class="stat-label">Personas en la Comunidad</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">+7000<span></div>
+            <div class="stat-label">Visitas Mensuales</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">00<span>4</span></div>
+            <div class="stat-label">Número de Edición</div>
+        </div>
     </div>
 
-    <!-- Línea divisoria gris -->
-    <div class="divider-line"></div>
+    <!-- ARTICLES GRID -->
+<section class="editorial-section" id="articulos">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">PERIODISMO CIUDADANO</h2>
+            <span class="w-300 section-subtitle">lo más leído de la semana</span>
+        </div>
 
-    <!-- Texto con estilo Inter -->
-    <div class="message">
-      Nuestra página web está llegando
+           <div class="articles-grid" id="contenedor-sanity">
+           </div>
+            <div class="cta-colaborar-container">
+<a href="mailto:comercial@creatuboom.com?subject=Quiero%20publicar%20mi%20contenido%20en%20Periodismo%20Ciudadano" class="btn-colaborar" style="background-color: #a0092c; color: #ffffff;">    ¿Quieres ser parte y publicar tu contenido en esta sección? Envíanos un correo
+  </a>
+</div>
+            <!-- Artículos desde Sanity -->
+</div>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section class="manifesto" id="manifiesto">
+        <div class="container">
+            <span class="editorial-label">EL PENSAR DE LA COMUNIDAD</span>
+            <blockquote class="quote-text">
+             <strong>La autenticidad, la honestidad y la voz personal</strong> son la base de gran parte de lo que tiene éxito en la era digital.
+            </blockquote>
+            <p class="author">Rick Levine
+        </div>
+    </section>
+
+    <!-- Carga de la fuente Inter desde Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <!-- Logo en el centro -->
+    <div class="footer-logo">
+      <img src="LOGO.png" alt="Logo">
     </div>
 
-    <!-- Contador marcha atrás -->
-    <div class="countdown-grid">
-      <div class="countdown-item">
-        <span class="number" id="days">00</span>
-        <span class="label">Días</span>
-      </div>
-      <div class="countdown-item">
-        <span class="number" id="hours">00</span>
-        <span class="label">Horas</span>
-      </div>
-      <div class="countdown-item">
-        <span class="number" id="minutes">00</span>
-        <span class="label">Minutos</span>
-      </div>
-      <div class="countdown-item">
-        <span class="number" id="seconds">00</span>
-        <span class="label">Segundos</span>
-      </div>
-    </div>
+    <!-- Texto descriptivo en gris -->
+    <p class="footer-description">
+      Un espacio para quienes quieren crecer, aprender y entender lo que pasa en el mundo de quienes emprenden, crean y hacen.
+    </p>
+
+    <!-- Derechos reservados -->
+    <p class="footer-copyright">
+      Crea tu Boom® Todos los derechos reservados.
+    </p>
   </div>
+</footer>
 
-  <script>
-    // Fecha de lanzamiento: Lunes 19 de Octubre de 2026 (00:00 hs)
-    const targetDate = new Date('October 26, 2026 17:00:00').getTime();
+    <!-- Conector con Sanity Studio -->
+<script>
+  // Control del menú desplegable en celulares
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileNav = document.getElementById('mobileNav');
 
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
+  if (menuToggle && mobileNav) {
+    menuToggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('active');
+    });
+  }
 
-      if (difference <= 0) {
-        document.getElementById('days').innerText = '00';
-        document.getElementById('hours').innerText = '00';
-        document.getElementById('minutes').innerText = '00';
-        document.getElementById('seconds').innerText = '00';
-        return;
-      }
+  // Configuración de Sanity
+  const projectId = '0jh34002';
+  const dataset = 'production';
 
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+  const query = encodeURIComponent(`*[_type == "post" && !(_id in path("drafts.**"))] | order(publishedAt desc){
+    title,
+    "imageUrl": mainImage.asset->url,
+    publishedAt,
+    "slug": slug.current,
+    author->{name}
+  }`);
 
-      document.getElementById('days').innerText = String(days).padStart(2, '0');
-      document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-      document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-      document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+  const url = `https://${projectId}.api.sanity.io/v2021-10-21/data/query/${dataset}?query=${query}`;
+
+  async function cargarArticulosDeSanity() {
+    try {
+      const respuesta = await fetch(url);
+      const resultado = await respuesta.json();
+      const posts = resultado.result;
+      
+      console.log("Artículos que llegaron de Sanity:", posts);
+      
+      const contenedor = document.querySelector('.articles-grid');
+      if (!contenedor || !posts || posts.length === 0) return;
+
+      contenedor.innerHTML = posts.map((post, index) => {
+        const numeroStr = String(index + 1).padStart(2, '0');
+        const fechaFormateada = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('es-ES') : '';
+        const nombreAutor = post.author && post.author.name ? post.author.name : 'Redacción';
+
+const enlacePost = `post.html?slug=${post.slug}`;
+
+        return `
+          <article class="article-card">
+            <span class="article-num">${numeroStr}</span>
+            ${post.imageUrl ? `<a href="${enlacePost}"><img src="${post.imageUrl}" alt="${post.title}" style="width:100%; height:180px; object-fit:cover; margin-bottom:1rem;"></a>` : ''}
+            <h3 class="article-title">
+              <a href="${enlacePost}" style="text-decoration: none; color: inherit;">${post.title || ''}</a>
+            </h3>
+            <div class="article-meta">Por ${nombreAutor} — ${fechaFormateada}</div>
+          </article>
+        `;
+      }).join('');
+
+    } catch (error) {
+      console.error("Error al conectar con Sanity:", error);
     }
+  }
 
-    // Actualiza el contador cada segundo
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
-
+  // Ejecutar de inmediato
+  cargarArticulosDeSanity();
+</script>
 </body>
 </html>
