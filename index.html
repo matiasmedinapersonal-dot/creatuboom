@@ -48,13 +48,23 @@
                 padding: 12px 20px !important;
                 border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important; /* Segunda línea gris separadora */
             }
-        .punto-en-vivo-ticker {
-        width: 40px !important;       /* Hazlo más ancho aquí */
-        height: 10px !important;      /* Hazlo más bajo aquí */
-        min-width: 20px !important;   /* Forzamos el ancho mínimo */
-        max-height: 10px !important;  /* Forzamos la altura máxima */
-        border-radius: 70px !important; /* Mantiene los bordes suavemente redondeados */
-    }
+
+            /* Imagen del óvalo aplicada exclusivamente para celular */
+            .punto-en-vivo-ticker {
+                display: inline-block !important;
+                width: 25px !important;              /* Ajusta el ancho según tu imagen */
+                height: 12px !important;             /* Ajusta el alto según tu imagen */
+                background-image: url('ovalo.png') !important;
+                background-size: contain !important;
+                background-repeat: no-repeat !important;
+                background-position: center !important;
+                background-color: transparent !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                min-width: unset !important;
+                max-height: unset !important;
+            }
+
             .logo-img {
                 width: 90px !important;
                 margin: 0 !important;
