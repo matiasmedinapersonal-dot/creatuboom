@@ -108,10 +108,23 @@
                 width: 100% !important; /* El botón ocupa el ancho completo para verse ordenado */
             }
 
-            /* 5. Ajuste del tamaño del título en la sección Periodismo Ciudadano para móvil */
+            /* 5. Ajuste del tamaño y espaciado de Periodismo Ciudadano para móvil */
+            .section-header {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+
             .section-header .section-title {
-                font-size: 2.4rem !important;
+                font-size: 2.2rem !important;
+                line-height: 1.1 !important;
+                margin-bottom: 0.2rem !important;
                 word-break: break-word !important;
+            }
+
+            .section-header .section-subtitle {
+                margin-top: 0.6rem !important;
+                display: block !important;
             }
         }
     </style>
@@ -389,4 +402,4 @@ const enlacePost = `post.html?slug=${post.slug}`;
   cargarArticulosDeSanity();
 </script>
 </body>
-</html>[cite: 1]
+</html>
