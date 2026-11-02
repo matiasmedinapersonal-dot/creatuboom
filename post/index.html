@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crea tu Boom</title>
+    <!-- Vinculamos tu archivo CSS existente -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* AJUSTES EXCLUSIVOS PARA MÓVIL (No afecta a la versión PC) */
+        @media (max-width: 768px) {
+            .header-container {
+                display: flex !important;
+                flex-direction: column !important;
+                padding: 0 !important;
+            }
+
+            /* 1. Cinta deslizante arriba a ancho completo */
+            .top-bar-ticker {
+                width: 100% !important;
+                padding: 8px 0 !important;
+                margin: 0 !important;
+            }
+
+            .ticker-item span {
+                font-size: 0.4rem !important; /* Texto más pequeño para celular */
+                padding: 0 10px !important;
+            }
+
+            /* 2. Primera línea gris separadora */
+            .linea-header-top {
+                width: 100% !important;
+                height: 1px !important;
+                background-color: #e5e5e5 !important;
+                margin: 0 !important;
+            }
+
+            /* 3. Fila del Logo (Izquierda) y Botón Hamburguesa (Derecha) */
+            .header-logo-row {
+                width: 100% !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                padding: 12px 20px !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important; /* Segunda línea gris separadora */
+            }
+
+            /* Imagen del óvalo aplicada exclusivamente para celular */
+            .punto-en-vivo-ticker {
+                display: inline-block !important;
+                width: 25px !important;            /* Ajusta el ancho según tu imagen */
+                height: 12px !important;            /* Ajusta el alto según tu imagen */
+                background-image: url('ovalo.png') !important;
+                background-size: contain !important;
+                background-repeat: no-repeat !important;
+                background-position: center !important;
+                background-color: transparent !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                min-width: unset !important;
+                max-height: unset !important;
+            }
+
+            .logo-img {
+                width: 90px !important;
+                margin: 0 !important;
+            }
+
+            .mobile-menu-toggle {
+                display: flex !important;
+                position: static !important;
+                padding: 5px !important;
+            }
+
+            /* Ocultar el bloque de llamada al autor en móvil */
+            .bloque-autor-movil {
+                display: none !important;
+            }
+
+            /* Centrar por completo el bloque de compartir en móvil */
+            .barra-compartir {
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 1rem !important;
+            }
+
+            .bloque-compartir-interno {
+                justify-content: center !important;
+                flex: none !important;
+                width: 100% !important;
+            }
+        }
+
+        /* Ocultar barra de scroll en los carruseles */
+        div[id^="galeria-"]::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Disposición Grid para separar la columna del artículo y el Banner Publicitario */
+        .layout-articulo {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
+        /* Ocultar la publicidad y el bloque lateral en celulares / tablets pequeñas */
+        .columna-publicidad {
+            display: none;
+        }
+
+        /* Solo en ordenadores y laptops (PC) se activa la columna lateral */
+        @media (min-width: 900px) {
+            .layout-articulo {
+                grid-template-columns: 68% 28%;
+                align-items: start;
+            }
+            .columna-publicidad {
+                display: block;
+            }
+        }
+    
+        /* Importar fuente Edition descargada en la carpeta de tu proyecto */
+        @font-face {
+            font-family: 'Edition';
+            src: url('Edition.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Animación de parpadeo suave para el punto rojo "en vivo" */
+        @keyframes parpadeoRojo {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(198, 42, 47, 0.7);
+            }
+            50% {
+                opacity: 0.35;
+                transform: scale(0.85);
+                box-shadow: 0 0 8px 2px rgba(198, 42, 47, 0.2);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(198, 42, 47, 0.7);
+            }
+        }
+
+        .punto-en-vivo {
+            width: 8px;
+            height: 8px;
+            background-color: #c62a2f;
+            border-radius: 50%;
+            display: inline-block;
+            animation: parpadeoRojo 1.4s infinite ease-in-out;
+        }
+        /* La primera vista arranca visible */
+        .slide-1 {
+            animation: aparecerVista1 8s infinite ease-in-out;
+        }
+
+        /* La segunda vista arranca oculta y aparece después */
+        .slide-2 {
+            animation: aparecerVista2 8s infinite ease-in-out;
+        }
+
+        /* Animación para la Vista 1 (CREA TU BOOM) */
+        @keyframes aparecerVista1 {
+            0%, 45% {
+                opacity: 1;
+                visibility: visible;
+            }
+            50%, 95% {
+                opacity: 0;
+                visibility: hidden;
+            }
+            100% {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        /* Animación para la Vista 2 (Palabras a tamaño 3) */
+        @keyframes aparecerVista2 {
+            0%, 45% {
+                opacity: 0;
+                visibility: hidden;
+            }
+            50%, 95% {
+                opacity: 1;
+                visibility: visible;
+            }
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER STYLE EN MÓVIL / TRADICIONAL EN ORDENADOR -->
+    <header class="editorial-header">
+        <div class="header-container">
+            
+            <!-- CINTA DE TEXTO DESLIZANTE (TICKER) -->
+            <div class="top-bar-ticker">
+                <div class="ticker-track">
+                    <!-- Grupo 1 -->
+                    <div class="ticker-item">
+                        <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
+                        <span class="punto-en-vivo-ticker"></span>
+                        <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
+                        <span class="punto-en-vivo-ticker"></span>
+                    </div>
+                    <!-- Grupo 2 (Duplicado para loop continuo) -->
+                    <div class="ticker-item">
+                        <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
+                        <span class="punto-en-vivo-ticker"></span>
+                        <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
+                        <span class="punto-en-vivo-ticker"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LÍNEA SEPARADORA SUPERIOR -->
+            <div class="linea-header-top"></div>
+
+            <!-- Fila del Logo -->
+            <div class="header-logo-row">
+                <a href="index.html" class="logo">
+                    <img src="LOGOROJO.png" alt="Crea tu Boom" class="logo-img">
+                </a>
+                
+                <!-- Botón de Menú para Celulares -->
+                <button class="mobile-menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+            <!-- Fila de Navegación -->
+            <nav class="header-nav-row" id="mobileNav">
+                <ul>
+                    <li><a href="index.html">INICIO</a></li>
+                    <li><a href="somoscreatuboom.html">SOMOS CREA TU BOOM</a></li>
+                    <li><a href="contacto.html">CONTACTO</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- CONTENIDO DEL ARTÍCULO -->
+    <main class="container" style="max-width: 1250px; margin: 3rem auto 0; padding: 0 1.5rem;">        
+        <div id="detalle-articulo" style="margin-bottom: 0 !important; padding-bottom: 0 !important;">
+            <h1>Cargando contenido...</h1>
+        </div>
+    </main>
+
+    <script>
+        // Control del menú desplegable en celulares
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+
+        if (menuToggle && mobileNav) {
+            menuToggle.addEventListener('click', () => {
+                mobileNav.classList.toggle('active');
+            });
+        }
+
+        // 1. Capturamos el slug que viene en la URL
+        const parametrosURL = new URLSearchParams(window.location.search);
+        const slugActual = parametrosURL.get('slug');
+
+        // 2. Configuración de Sanity
+        const projectId = '0jh34002';
+        const dataset = 'production';
+
+        const query = encodeURIComponent(`{
+            "post": *[_type == "post" && slug.current == "${slugActual}"][0]{
+                title,
+                "slug": slug.current,
+                "imageUrl": mainImage.asset->url,
+                publishedAt,
+                author->{
+                    name,
+                    "avatarUrl": image.asset->url,
+                    instagram
+                },
+                body[]{
+                    ...,
+                    _type == "image" => {
+                        "asset": asset->
+                    }
+                }
+            },
+            "ultimosPosts": *[_type == "post" && slug.current != "${slugActual}"] | order(publishedAt desc)[0...5]{
+                title,
+                "slug": slug.current,
+                "imageUrl": mainImage.asset->url,
+                publishedAt,
+                author->{
+                    name
+                }
+            }
+        }`);
+
+        const url = `https://${projectId}.api.sanity.io/v2021-10-21/data/query/${dataset}?query=${query}`;
+
+        async function cargarDetallePost() {
+            try {
+                const respuesta = await fetch(url);
+                const resultado = await respuesta.json();
+                const post = resultado.result.post;
+                const ultimosPosts = resultado.result.ultimosPosts || [];
+
+                const contenedor = document.getElementById('detalle-articulo');
+
+                if (!post) {
+                    contenedor.innerHTML = "<h2>Artículo no encontrado</h2><p>Lo sentimos, la nota que buscas no existe o fue eliminada.</p>";
+                    return;
+                }
+
+                // Datos del autor
+                const fechaFormateada = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('es-ES') : '';
+                const nombreAutor = post.author && post.author.name ? post.author.name : 'Redacción';
+                const avatarAutor = post.author && post.author.avatarUrl 
+                    ? post.author.avatarUrl 
+                    : 'https://cdn-icons-png.flaticon.com/512/847/847969.png'; 
+
+                // --- DICCIONARIO DE INSTAGRAM POR AUTOR ---
+                const instagramPorAutor = {
+                    "Andrea Vanegas": "https://instagram.com/clarooscuro_copywriter",
+                    "Miguel Moreno": "https://instagram.com/miguelmoreno",
+                    "Frederick Alvizu" : "https://www.instagram.com/frederickalvizu",
+                    "Lemma & Santos": "https://www.instagram.com/lemmasantos",
+                };
+
+                const instagramUrl = (post.author && instagramPorAutor[post.author.name]) 
+                    ? instagramPorAutor[post.author.name] 
+                    : 'https://instagram.com/creatuboom';
+
+                // Cambiar el título de la pestaña del navegador
+                document.title = `${post.title} — Crea tu Boom`;
+
+                // Procesar el cuerpo respetando negritas, saltos de línea y galerías de imágenes
+                let contenidoHTML = '';
+                if (post.body && Array.isArray(post.body)) {
+                    let acumuladorImágenes = [];
+
+                    const generarGaleria = (imagenes) => {
+                        if (imagenes.length === 0) return '';
+                        if (imagenes.length === 1) {
+                            return `<div style="margin: 2.5rem 0; text-align: center;"><img src="${imagenes[0]}" style="width: 100%; max-height: 550px; object-fit: contain; border-radius: 4px;" alt="Imagen del artículo"></div>`;
+                        }
+                        
+                        const galeriaId = 'galeria-' + Math.random().toString(36).substring(2, 9);
+
+                        let htmlGaleria = `
+                            <div style="position: relative; margin: 3rem auto; max-width: 600px;">
+                                <div id="${galeriaId}" style="display: flex; gap: 0.3rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 0.5rem 0; -webkit-overflow-scrolling: touch; scrollbar-width: none; ms-overflow-style: none;">
+                        `;
+
+                        imagenes.forEach(imgUrl => {
+                            htmlGaleria += `
+                                <div style="flex: 0 0 100%; width: 100%; scroll-snap-align: center; display: flex; justify-content: center; align-items: center;">
+                                    <img src="${imgUrl}" style="width: 100%; height: auto; max-height: 600px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.06);" alt="Diapositiva">
+                                </div>
+                            `;
+                        });
+
+                        htmlGaleria += `
+                                </div>
+
+                                <!-- Botón Flecha Izquierda -->
+                                <button onclick="document.getElementById('${galeriaId}').scrollBy({left: -document.getElementById('${galeriaId}').clientWidth, behavior: 'smooth'})" 
+                                    style="position: absolute; left: -22px; top: 50%; transform: translateY(-50%); width: 42px; height: 42px; border-radius: 50%; background: #ffffff; border: 1px solid #e0e0e0; box-shadow: 0 4px 10px rgba(0,0,0,0.12); cursor: pointer; display: flex; align-items: center; justify-content: center; color: #333; z-index: 10; transition: all 0.2s ease;"
+                                    onmouseover="this.style.borderColor='#c62a2f'; this.style.color='#c62a2f';" onmouseout="this.style.borderColor='#e0e0e0'; this.style.color='#333';" aria-label="Anterior">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                                </button>
+
+                                <!-- Botón Flecha Derecha -->
+                                <button onclick="document.getElementById('${galeriaId}').scrollBy({left: document.getElementById('${galeriaId}').clientWidth, behavior: 'smooth'})" 
+                                    style="position: absolute; right: -22px; top: 50%; transform: translateY(-50%); width: 42px; height: 42px; border-radius: 50%; background: #ffffff; border: 1px solid #e0e0e0; box-shadow: 0 4px 10px rgba(0,0,0,0.12); cursor: pointer; display: flex; align-items: center; justify-content: center; color: #333; z-index: 10; transition: all 0.2s ease;"
+                                    onmouseover="this.style.borderColor='#c62a2f'; this.style.color='#c62a2f';" onmouseout="this.style.borderColor='#e0e0e0'; this.style.color='#333';" aria-label="Siguiente">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </button>
+                            </div>
+                        `;
+                        return htmlGaleria;
+                    };
+
+                    post.body.forEach(bloque => {
+                        if (bloque._type === 'block' && bloque.children) {
+                            if (acumuladorImágenes.length > 0) {
+                                contenidoHTML += generarGaleria(acumuladorImágenes);
+                                acumuladorImágenes = [];
+                            }
+
+                            const htmlLinea = bloque.children.map(child => {
+                                let texto = child.text || '';
+                                if (child.marks && child.marks.includes('strong')) {
+                                    return `<strong>${texto}</strong>`;
+                                }
+                                return texto;
+                            }).join('');
+
+                            const parrafosSeparados = htmlLinea.split('\n');
+                            contenidoHTML += parrafosSeparados.map(p => p.trim() ? `<p style="margin-bottom: 1.5rem;">${p}</p>` : '').join('');
+                        }
+                        else if (bloque._type === 'image' && bloque.asset && bloque.asset.url) {
+                            acumuladorImágenes.push(bloque.asset.url);
+                        }
+                    });
+
+                    if (acumuladorImágenes.length > 0) {
+                        contenidoHTML += generarGaleria(acumuladorImágenes);
+                    }
+
+                } else {
+                    contenidoHTML = '<p>Este artículo no tiene contenido todavía.</p>';
+                }
+
+                // Generar HTML para la lista de los últimos 5 artículos con autor
+                let htmlUltimosPosts = '';
+                if (ultimosPosts.length > 0) {
+                    ultimosPosts.forEach((item, index) => {
+                        const esUltimo = index === ultimosPosts.length - 1;
+                        const nombreAutorPost = item.author && item.author.name ? item.author.name : 'Redacción';
+                        
+                        htmlUltimosPosts += `
+                            <a href="post.html?slug=${item.slug}" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 0.8rem; text-decoration: none; padding: 0.9rem 0; ${!esUltimo ? 'border-bottom: none;' : ''} transition: opacity 0.2s ease;" onmouseover="this.style.opacity='0.75';" onmouseout="this.style.opacity='1';">
+                                <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                                    <h3 style="font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 700; color: #111111; margin: 0 0 0.3rem 0; line-height: 1.35;">
+                                        ${item.title}
+                                    </h3>
+                                    <span style="font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500; color: #777777;">
+                                        ${nombreAutorPost}
+                                    </span>
+                                </div>
+                                ${item.imageUrl ? `
+                                    <img src="${item.imageUrl}" alt="${item.title}" style="width: 62px; height: 52px; object-fit: cover; border-radius: 4px; flex-shrink: 0;">
+                                ` : ''}
+                            </a>
+                        `;
+                    });
+                } else {
+                    htmlUltimosPosts = '<p style="font-size: 0.82rem; color: #777; margin: 0.8rem 0;">No hay otras publicaciones recientes.</p>';
+                }
+
+                // Pintar el diseño con la estructura Grid correcta
+                contenedor.innerHTML = `
+                    <!-- TÍTULO PRINCIPAL (ABARCA TODO EL ANCHO) -->
+                    <h1 style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; color: #111; margin-bottom: 1.2rem; letter-spacing: -0.02em;">
+                        ${post.title}
+                    </h1>
+
+                    <!-- BARRA DEL AUTOR (ABARCA TODO EL ANCHO) -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; padding: 0.8rem 0; margin: 1.8rem 0 2.5rem 0;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <img src="${avatarAutor}" alt="${nombreAutor}" style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover;">
+                            <span style="font-size: 0.95rem; color: #444; font-family: 'Inter', sans-serif;">
+                                Por <strong style="color: #111; font-weight: 700;">${nombreAutor}</strong>
+                            </span>
+                        </div>
+
+                        <a href="${instagramUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; border: 1px solid #ccc; border-radius: 20px; padding: 5px 14px; text-decoration: none; color: #333; font-size: 0.85rem; font-weight: 600; font-family: 'Inter', sans-serif; transition: all 0.2s ease;" onmouseover="this.style.borderColor='#c62a2f'; this.style.color='#c62a2f';" onmouseout="this.style.borderColor='#ccc'; this.style.color='#333';">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                            Seguir
+                        </a>
+                    </div>
+
+                    <!-- LAYOUT DE 2 COLUMNAS -->
+                    <div class="layout-articulo">
+                        
+                        <!-- COLUMNA IZQUIERDA: CONTENIDO DE LA NOTA -->
+                        <div class="columna-contenido">
+                            <!-- IMAGEN PRINCIPAL -->
+                            ${post.imageUrl ? `<img src="${post.imageUrl}" alt="${post.title}" style="width:100%; max-height:480px; object-fit:cover; border-radius: 4px; margin-bottom: 2.5rem;">` : ''}
+
+                            <!-- CUERPO DEL TEXTO -->
+                            <div class="cuerpo-texto" style="line-height: 1.6; color: #222; font-size: 1.12rem; margin-bottom: 3rem; font-family: 'Inter', sans-serif;">
+                                ${contenidoHTML}
+                            </div>
+                        </div>
+
+                        <!-- COLUMNA DERECHA: RECTÁNGULO PUBLICITARIO + ÚLTIMAS PUBLICACIONES ENMARCADAS -->
+                        <aside class="columna-publicidad">
+                            <!-- RECTÁNGULO PUBLICITARIO -->
+                            <div style="background-color: #121212; border-radius: 2px; padding: 1.2rem; color: #ffffff; font-family: 'Inter', sans-serif; box-shadow: 0 8px 24px rgba(0,0,0,0.18); text-align: left; margin-bottom: 2rem;">
+                                
+                                <!-- ETIQUETA SUPERIOR CON PUNTO ROJO EN VIVO -->
+                                <div style="display: flex; align-items: center; justify-content: center; gap: 0.45rem; margin-bottom: 0.9rem;">
+                                    <span class="punto-en-vivo"></span>
+                                    <span style="font-size: 0.82rem; font-weight: 600; color: #dddddd; letter-spacing: -0.01em;">
+                                        Lo más reciente
+                                    </span>
+                                </div>
+
+                                <!-- IMAGEN DE LA EMPRENDEDORA -->
+                                <div style="margin-bottom: 1rem; width: 100%; border-radius: 2px; overflow: hidden;">
+                                    <img src="emprendedorames.png" alt="Camila Noemí Ríos — Emprendedora del mes" style="width: 100%; height: auto; display: block; object-fit: cover; border-radius: 2px;">
+                                </div>
+
+                                <!-- SUBTÍTULO PRINCIPAL (CONOCE A LA EMPRENDEDORA) -->
+                                <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 400; color: #ffffff; margin: 0 0 1.2rem 0; line-height: 1.25; text-align: center;">
+                                    Conoce a <strong style="font-weight: 800; color: #ffffff;">Camila Noemí Ríos</strong>, la joven argentina que fue nombrada la emprendedora del mes.
+                                </p>
+
+                                <!-- BOTÓN ELÍPTICO -->
+                                <a href="https://www.instagram.com/p/DdRjCiLghPz/" target="_blank" rel="noopener noreferrer" 
+                                   style="display: block; width: 55%; margin: 0 auto; text-align: center; background-color: #e2242a; color: #ffffff; text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.55rem 1rem; border-radius: 50% / 100%; font-family: 'Inter', sans-serif; transition: all 0.2s ease; box-shadow: 0 4px 10px rgba(198, 42, 47, 0.3);" 
+                                   onmouseover="this.style.backgroundColor='#a82227'; this.style.transform='scale(1.02)';" 
+                                   onmouseout="this.style.backgroundColor='#c62a2f'; this.style.transform='scale(1)';">
+                                    Ir a conocer
+                                </a>
+
+                            </div>
+
+                            <!-- BLOQUE ÚLTIMAS PUBLICACIONES DENTRO DE MARCO -->
+                            <div style="border: 1px solid #e5e5e5; border-radius: 2px; background-color: #ffffff; padding: 1.2rem; font-family: 'Inter', sans-serif;">
+                                <!-- ENCABEZADO ESTILO PERIODÍSTICO -->
+                                <div style="position: relative; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e5e5e5;">
+                                    <h2 style="font-size: 1.05rem; color: #111111; margin: 0; font-weight: 400; font-family: 'Inter', sans-serif;">
+                                       <span style="color: #111111; font-weight: 800;">Comunidad</span> <span style="color: #888888; font-weight: 200;">|</span> <strong style="font-weight: 300; color: #111111;">Últimos escritos</strong>
+                                    </h2>
+                                    <!-- LÍNEA DE ACENTO ROJA -->
+                                    <div style="position: absolute; bottom: -1px; left: 0; width: 97px; height: 2px; background-color: #c62a2f;"></div>
+                                </div>
+
+                                <!-- LISTA DE ARTÍCULOS DESDE SANITY -->
+                                <div>
+                                    ${htmlUltimosPosts}
+                                </div>
+                            </div>
+                            
+                            <div class="caja-marca-boom" style="overflow: hidden; border-radius: 2px; background-color: #121212; position: relative; height: 480px; margin-top: 2rem;">
+                                <!-- VISTA 1: CREA TU BOOM -->
+                                <div class="slide-boom slide-1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box; padding: 1rem; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                                    <span class="badge-marca">CONOCE MÁS A</span>
+                                    <h3 class="titulo-marca">CREA TU BOOM</h3>
+                                    <p class="texto-marca">
+                                        Un espacio para quienes quieren crecer, aprender y entender lo que pasa en el mundo de quienes emprenden, crean y hacen.
+                                    </p>
+                                    <a href="https://instagram.com/creatuboom" target="_blank" rel="noopener noreferrer" 
+                                       style="display: block; width: 55%; margin: 0 auto; text-align: center; background-color: #e2242a; color: #ffffff; text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.55rem 1rem; border-radius: 50% / 100%; font-family: 'Inter', sans-serif;">
+                                        Ir a conocer
+                                    </a>
+                                </div>
+
+                                <!-- VISTA 2: PALABRAS APILADAS -->
+                                <div class="slide-boom slide-2" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box; padding: 1rem; font-family: 'Inter', sans-serif; display: flex; justify-content: center; align-items: center;">
+                                    <div class="titulo-marca" style="display: flex; flex-direction: column; text-align: center; font-size: 3rem; line-height: 1.1; margin: 0; letter-spacing: -0.02em;">
+                                        <span>CRECER</span>
+                                        <span>APRENDER</span>
+                                        <span>ENTENDER</span>
+                                        <span>EMPRENDER</span>
+                                        <span>CREAR</span>
+                                        <span>HACER</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </aside>
+
+                    </div> <!-- Fin de .layout-articulo -->
+
+                    <!-- SECCIÓN INFERIOR DE ANCHO COMPLETO (FONDO GRIS Y TEXTO BLANCO) -->
+                    <div class="barra-compartir" style="width: 100%; max-width: 1700px; margin: 0 auto; padding: 1.5rem 2rem; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2rem; box-sizing: border-box;">
+                        
+                        <!-- BLOQUE IZQUIERDO: COMPARTIR NOTA (Centrado en móvil mediante clases CSS arriba) -->
+                        <div class="bloque-compartir-interno" style="display: flex; align-items: center; gap: 1.5rem; flex: 1; min-width: 300px;">
+                            <span style="font-size: 0.95rem; font-weight: 600; color: #ffffff; font-family: 'Inter', sans-serif; white-space: nowrap;">
+                                Compartir nota:
+                            </span>
+                            
+                            <div style="display: flex; gap: 0.75rem; align-items: center;">
+                                <!-- WhatsApp -->
+                                <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(post.title + ' ' + window.location.href)}" target="_blank" rel="noopener noreferrer" style="width: 38px; height: 38px; border: 1px solid #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='#c62a2f';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#ffffff';" title="Compartir en WhatsApp">
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                                </a>
+
+                                <!-- Facebook -->
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank" rel="noopener noreferrer" style="width: 38px; height: 38px; border: 1px solid #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='#c62a2f';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#ffffff';" title="Compartir en Facebook">
+                                    <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.37 14.5 5 15.5 5H18V0h-3.808C10.592 0 9 1.582 9 4.75V8z"/></svg>
+                                </a>
+
+                                <!-- X (Twitter) -->
+                                <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(post.title)}" target="_blank" rel="noopener noreferrer" style="width: 38px; height: 38px; border: 1px solid #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='#c62a2f';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#ffffff';" title="Compartir en X">
+                                    <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                </a>
+
+                                <!-- LinkedIn -->
+                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}" target="_blank" rel="noopener noreferrer" style="width: 38px; height: 38px; border: 1px solid #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='#c62a2f';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#ffffff';" title="Compartir en LinkedIn">
+                                    <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                </a>
+
+                                <!-- Telegram -->
+                                <a href="https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(post.title)}" target="_blank" rel="noopener noreferrer" style="width: 38px; height: 38px; border: 1px solid #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='#c62a2f';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#ffffff';" title="Compartir en Telegram">
+                                    <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.897 8.326l-2.07 9.75c-.15.683-.553.85-1.122.53l-3.104-2.288-1.498 1.443c-.166.166-.306.306-.627.306l.221-3.155 5.733-5.176c.249-.221-.055-.344-.383-.124l-7.09 4.467-3.056-.954c-.663-.208-.677-.663.14-.981l11.936-4.603c.552-.202 1.035.126.852.809z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- BLOQUE DERECHO: LLAMADO AL AUTOR (Oculto en móvil mediante .bloque-autor-movil, intacto en PC) -->
+                        <div class="bloque-autor-movil" style="display: flex; align-items: center; justify-content: right; gap: 1.5rem; flex: 1.3; min-width: 320px;">
+                            <p style="font-size: 0.95rem; font-weight: 500; color: #ffffff; margin: 0; font-family: 'Inter', sans-serif; white-space: nowrap;">
+                                ¿Te gustó este tipo de contenido? Conoce más acerca del autor
+                            </p>
+                            
+                            <a href="${instagramUrl}" target="_blank" rel="noopener noreferrer" 
+                               style="display: inline-block; background-color: #c62a2f; color: #ffffff; padding: 0.7rem 1.6rem; border-radius: 30px; font-weight: 600; font-size: 0.9rem; text-decoration: none; font-family: 'Inter', sans-serif; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); white-space: nowrap;"
+                               onmouseover="this.style.backgroundColor='#a82227'; this.style.transform='translateY(-2px)';" 
+                               onmouseout="this.style.backgroundColor='#c62a2f'; this.style.transform='translateY(0)';">
+                                Conoce su trabajo
+                            </a>
+                        </div>
+
+                    </div> <!-- Fin de .barra-compartir -->
+                `;
+
+            } catch (error) {
+                console.error("Error al cargar el artículo:", error);
+                document.getElementById('detalle-articulo').innerHTML = "<p>Hubo un error al cargar el artículo.</p>";
+            }
+        }
+
+        cargarDetallePost();
+    </script>
+
+    <!-- Carga de la fuente Inter desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <footer class="site-footer">
+      <div class="footer-container">
+        <!-- Logo en el centro -->
+        <div class="footer-logo">
+          <img src="LOGO.png" alt="Logo">
+        </div>
+
+        <!-- Texto descriptivo en gris -->
+        <p class="footer-description">
+          Un espacio para quienes quieren crecer, aprender y entender lo que pasa en el mundo de quienes emprenden, crean y hacen.
+        </p>
+
+        <!-- Derechos reservados -->
+        <p class="footer-copyright">
+          Crea tu Boom® Todos los derechos reservados.
+        </p>
+      </div>
+    </footer>
+</body>
+</html>
