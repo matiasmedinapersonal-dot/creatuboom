@@ -75,6 +75,28 @@
                 position: static !important;
                 padding: 5px !important;
             }
+
+            /* 4. Botón de envío en forma de óvalo perfecto con la imagen ovalo.png para celular */
+            .btn-submit {
+                width: 160px !important;
+                height: 75px !important;
+                background-image: url('ovalook.png' -> 'ovalo.png') !important; /* Usamos ovalo.png */
+                background-image: url('ovalo.png') !important;
+                background-size: contain !important;
+                background-repeat: no-repeat !important;
+                background-position: center !important;
+                background-color: transparent !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                margin: 0 auto !important;
+                padding: 0 !important;
+                font-size: 0.75rem !important;
+                text-align: center !important;
+                line-height: 1.1 !important;
+            }
         }
 
         /* Estilos específicos para la sección de Contacto */
@@ -289,11 +311,8 @@
 
             <!-- BOTÓN ELÍPTICO -->
             <div class="btn-submit-container">
-                <button type="submit"
-                   style="display: block; width: 20%; margin: 0 auto; text-align: center; background-color: #a0092c; color: #ffffff; text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.55rem 1rem; border-radius: 50% / 100%; font-family: 'Inter', sans-serif; transition: all 0.2s ease; box-shadow: 0 4px 10px rgba(198, 42, 47, 0.3); border: none; cursor: pointer;"
-                   onmouseover="this.style.backgroundColor='#a0092c'; this.style.transform='scale(1.02)';"
-                   onmouseout="this.style.backgroundColor='#a0092c'; this.style.transform='scale(1)';">
-                   Enviar mensaje
+                <button type="submit" class="btn-submit">
+                    Enviar mensaje
                 </button>
             </div>
         </form>
