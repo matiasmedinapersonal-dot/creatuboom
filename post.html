@@ -75,6 +75,24 @@
                 position: static !important;
                 padding: 5px !important;
             }
+
+            /* Ocultar el bloque de llamada al autor en móvil */
+            .bloque-autor-movil {
+                display: none !important;
+            }
+
+            /* Centrar por completo el bloque de compartir en móvil */
+            .barra-compartir {
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 1rem !important;
+            }
+
+            .bloque-compartir-interno {
+                justify-content: center !important;
+                flex: none !important;
+                width: 100% !important;
+            }
         }
 
         /* Ocultar barra de scroll en los carruseles */
@@ -559,7 +577,9 @@
 
                     <!-- SECCIÓN INFERIOR DE ANCHO COMPLETO (FONDO GRIS Y TEXTO BLANCO) -->
                     <div class="barra-compartir" style="width: 100%; max-width: 1700px; margin: 0 auto; padding: 1.5rem 2rem; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2rem; box-sizing: border-box;">
-                        <div style="display: flex; align-items: center; gap: 1.5rem; flex: 1; min-width: 300px;">
+                        
+                        <!-- BLOQUE IZQUIERDO: COMPARTIR NOTA (Centrado en móvil mediante clases CSS arriba) -->
+                        <div class="bloque-compartir-interno" style="display: flex; align-items: center; gap: 1.5rem; flex: 1; min-width: 300px;">
                             <span style="font-size: 0.95rem; font-weight: 600; color: #ffffff; font-family: 'Inter', sans-serif; white-space: nowrap;">
                                 Compartir nota:
                             </span>
@@ -592,8 +612,8 @@
                             </div>
                         </div>
 
-                        <!-- BLOQUE DERECHO: LLAMADO AL AUTOR (EN UN SOLO RENGLÓN) -->
-                        <div style="display: flex; align-items: center; justify-content: right; gap: 1.5rem; flex: 1.3; min-width: 320px;">
+                        <!-- BLOQUE DERECHO: LLAMADO AL AUTOR (Oculto en móvil mediante .bloque-autor-movil, intacto en PC) -->
+                        <div class="bloque-autor-movil" style="display: flex; align-items: center; justify-content: right; gap: 1.5rem; flex: 1.3; min-width: 320px;">
                             <p style="font-size: 0.95rem; font-weight: 500; color: #ffffff; margin: 0; font-family: 'Inter', sans-serif; white-space: nowrap;">
                                 ¿Te gustó este tipo de contenido? Conoce más acerca del autor
                             </p>
