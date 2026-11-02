@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crea tu Boom</title>
     <!-- Vinculamos tu archivo CSS existente -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
@@ -54,7 +54,7 @@
                 display: inline-block !important;
                 width: 25px !important;            /* Ajusta el ancho según tu imagen */
                 height: 12px !important;            /* Ajusta el alto según tu imagen */
-                background-image: url('ovalo.png') !important;
+                background-image: url('/ovalo.png') !important;
                 background-size: contain !important;
                 background-repeat: no-repeat !important;
                 background-position: center !important;
@@ -126,7 +126,7 @@
         /* Importar fuente Edition descargada en la carpeta de tu proyecto */
         @font-face {
             font-family: 'Edition';
-            src: url('Edition.ttf') format('truetype');
+            src: url('/Edition.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -232,8 +232,8 @@
 
             <!-- Fila del Logo -->
             <div class="header-logo-row">
-                <a href="index.html" class="logo">
-                    <img src="LOGOROJO.png" alt="Crea tu Boom" class="logo-img">
+                <a href="/" class="logo">
+                    <img src="/LOGOROJO.png" alt="Crea tu Boom" class="logo-img">
                 </a>
                 
                 <!-- Botón de Menú para Celulares -->
@@ -247,9 +247,9 @@
             <!-- Fila de Navegación -->
             <nav class="header-nav-row" id="mobileNav">
                 <ul>
-                    <li><a href="https://creatuboom.com/">INICIO</a></li>
-                    <li><a href="https://creatuboom.com/somoscreatuboom/">SOMOS CREA TU BOOM</a></li>
-                    <li><a href="https://creatuboom.com/contacto/">CONTACTO</a></li>
+                    <li><a href="/">INICIO</a></li>
+                    <li><a href="/somoscreatuboom/">SOMOS CREA TU BOOM</a></li>
+                    <li><a href="/contacto/">CONTACTO</a></li>
                 </ul>
             </nav>
 
@@ -435,7 +435,7 @@
                         const nombreAutorPost = item.author && item.author.name ? item.author.name : 'Redacción';
                         
                         htmlUltimosPosts += `
-                            <a href="post.html?slug=${item.slug}" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 0.8rem; text-decoration: none; padding: 0.9rem 0; ${!esUltimo ? 'border-bottom: none;' : ''} transition: opacity 0.2s ease;" onmouseover="this.style.opacity='0.75';" onmouseout="this.style.opacity='1';">
+                            <a href="/post/?slug=${item.slug}" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 0.8rem; text-decoration: none; padding: 0.9rem 0; ${!esUltimo ? 'border-bottom: none;' : ''} transition: opacity 0.2s ease;" onmouseover="this.style.opacity='0.75';" onmouseout="this.style.opacity='1';">
                                 <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
                                     <h3 style="font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 700; color: #111111; margin: 0 0 0.3rem 0; line-height: 1.35;">
                                         ${item.title}
@@ -509,7 +509,7 @@
 
                                 <!-- IMAGEN DE LA EMPRENDEDORA -->
                                 <div style="margin-bottom: 1rem; width: 100%; border-radius: 2px; overflow: hidden;">
-                                    <img src="emprendedorames.png" alt="Camila Noemí Ríos — Emprendedora del mes" style="width: 100%; height: auto; display: block; object-fit: cover; border-radius: 2px;">
+                                    <img src="/emprendedorames.png" alt="Camila Noemí Ríos — Emprendedora del mes" style="width: 100%; height: auto; display: block; object-fit: cover; border-radius: 2px;">
                                 </div>
 
                                 <!-- SUBTÍTULO PRINCIPAL (CONOCE A LA EMPRENDEDORA) -->
@@ -647,7 +647,7 @@
       <div class="footer-container">
         <!-- Logo en el centro -->
         <div class="footer-logo">
-          <img src="LOGO.png" alt="Logo">
+          <img src="/LOGO.png" alt="Logo">
         </div>
 
         <!-- Texto descriptivo en gris -->
