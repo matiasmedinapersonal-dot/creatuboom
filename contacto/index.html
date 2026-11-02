@@ -1,1 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CREA TU BOOM - Contacto</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* AJUSTES EXCLUSIVOS PARA MÓVIL (No afecta a la versión PC) */
+        @media (max-width: 768px) {
+            .header-container {
+                display: flex !important;
+                flex-direction: column !important;
+                padding: 0 !important;
+            }
 
+            /* 1. Cinta deslizante arriba a ancho completo */
+            .top-bar-ticker {
+                width: 100% !important;
+                padding: 8px 0 !important;
+                margin: 0 !important;
+            }
+
+            .ticker-item span {
+                font-size: 0.4rem !important; /* Texto más pequeño para celular */
+                padding: 0 10px !important;
+            }
+
+            /* 2. Primera línea gris separadora */
+            .linea-header-top {
+                width: 100% !important;
+                height: 1px !important;
+                background-color: #e5e5e5 !important;
+                margin: 0 !important;
+            }
+
+            /* 3. Fila del Logo (Izquierda) y Botón Hamburguesa (Derecha) */
+            .header-logo-row {
+                width: 100% !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                padding: 12px 20px !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important; /* Segunda línea gris separadora */
+            }
+
+            /* Imagen del óvalo aplicada exclusivamente para celular en el ticker */
+            .punto-en-vivo-ticker {
+                display: inline-block !important;
+                width: 25px !important;              /* Ajusta el ancho según tu imagen */
+                height: 12px !important;             /* Ajusta el alto según tu imagen */
+                background-image: url('ovalo.png') !important;
+                background-size: contain !important;
+                background-repeat: no-repeat !important;
+                background-position: center !important;
+                background-color: transparent !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                min-width: unset !important;
+                max-height: unset !important;
+            }
+
+            .logo-img {
+                width: 90px !important;
+                margin: 0 !important;
+            }
+
+            .mobile-menu-toggle {
+                display: flex !important;
+                position: static !important;
+                padding: 5px !important;
+            }
+
+            /* 4. Botón de envío con forma de píldora (recto al medio y redondeado en los extremos) para celular */
+            .btn-submit {
+                width: 85% !important;
+                max-width: 320px !important;
+                height: auto !important;
+                background-image: none !important;
+                background-color: #a0092c !important;
+                border-radius: 50px / 100% !important;
+                display: block !important;
+                margin: 0 auto !important;
+                padding: 14px 20px !important;
+                font-size: 0.85rem !important;
+                text-align: center !important;
+                box-shadow: 0 4px 10px rgba(160, 9, 44, 0.3) !important;
+            }
+        }
+
+        /* Estilos específicos para la sección de Contacto */
+        .contact-section {
+            padding: 60px 20px 80px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            color: #000000;
+        }
+
+        .contact-subtitle {
+            font-size: 0.95rem;
+            color: #555555;
+            font-weight: 300;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .form-group label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            color: #111111;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            border: 1px solid #e1e1e1;
+            border-radius: 4px;
+            background-color: #fafafa;
+            color: #111111;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            background-color: #ffffff;
+            border-color: #e2242a;
+            box-shadow: 0 0 0 3px rgba(226, 36, 42, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .btn-submit-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .btn-submit {
+            display: inline-block;
+            background-color: #e2242a;
+            color: #ffffff;
+            border: none;
+            padding: 14px 36px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(198, 42, 47, 0.3);
+        }
+
+        .btn-submit:hover {
+            background-color: #c62a2f;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .contact-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER STYLE EN MÓVIL / TRADICIONAL EN ORDENADOR -->
+    <header class="editorial-header">
+        <div class="header-container">
+
+            <!-- CINTA DE TEXTO DESLIZANTE (TICKER) -->
+            <div class="top-bar-ticker">
+                <div class="ticker-track">
+                    <!-- Grupo 1 -->
+                    <div class="ticker-item">
+                        <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
+                        <span class="punto-en-vivo-ticker"></span>
+                        <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
+                        <span class="punto-en-vivo-ticker"></span>
+                    </div>
+                    <!-- Grupo 2 (Duplicado para loop continuo) -->
+                    <div class="ticker-item">
+                        <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
+                        <span class="punto-en-vivo-ticker"></span>
+                        <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
+                        <span class="punto-en-vivo-ticker"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LÍNEA SEPARADORA SUPERIOR -->
+            <div class="linea-header-top"></div> 
+
+            <div class="header-logo-row">
+                <a href="index.html" class="logo">
+                    <img src="LOGOROJO.png" alt="Logo de Crea tu Boom" class="logo-img">
+                </a>
+
+                <!-- Botón de tres rayas para celular -->
+                <button class="mobile-menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+            <!-- Menú de navegación -->
+            <nav class="header-nav-row" id="mobileNav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html#manifiesto">Somos Crea tu Boom</a></li>
+                    <li><a href="contacto.html" class="active">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- SECCIÓN DE CONTACTO -->
+    <main class="contact-section">
+        <div class="contact-header">
+            <h1 class="contact-title">Contacto</h1>
+            <p class="contact-subtitle">¿Tienes alguna consulta, propuesta o quieres colaborar con nosotros? Completa el formulario a continuación y nos pondremos en contacto contigo.</p>
+        </div>
+
+        <form class="contact-form" action="https://formspree.io/f/xkjoarlk" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="Nombre" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido" name="Apellido" placeholder="Tu apellido" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="telefono">Número de teléfono</label>
+                    <input type="tel" id="telefono" name="Telefono" placeholder="+54 9 11 1234 5678">
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="Email" placeholder="tu@email.com" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="Mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
+            </div>
+
+            <!-- BOTÓN EN FORMA DE PÍLDORA -->
+            <div class="btn-submit-container">
+                <button type="submit" class="btn-submit">
+                    Enviar mensaje
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- Logo en el centro -->
+            <div class="footer-logo">
+                <img src="LOGO.png" alt="Logo">
+            </div>
+
+            <!-- Texto descriptivo en gris -->
+            <p class="footer-description">
+                Un espacio para quienes quieren crecer, aprender y entender lo que pasa en el mundo de quienes emprenden, crean y hacen.
+            </p>
+
+            <!-- Derechos reservados -->
+            <p class="footer-copyright">
+                Crea tu Boom® Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JS para el menú responsive -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+
+        if (menuToggle && mobileNav) {
+            menuToggle.addEventListener('click', () => {
+                mobileNav.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
