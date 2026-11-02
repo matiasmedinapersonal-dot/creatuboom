@@ -9,7 +9,74 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+        /* AJUSTES EXCLUSIVOS PARA MÓVIL (No afecta a la versión PC) */
+        @media (max-width: 768px) {
+            .header-container {
+                display: flex !important;
+                flex-direction: column !important;
+                padding: 0 !important;
+            }
+
+            /* 1. Cinta deslizante arriba a ancho completo */
+            .top-bar-ticker {
+                width: 100% !important;
+                padding: 8px 0 !important;
+                margin: 0 !important;
+            }
+
+            .ticker-item span {
+                font-size: 0.4rem !important; /* Texto más pequeño para celular */
+                padding: 0 10px !important;
+            }
+
+            /* 2. Primera línea gris separadora */
+            .linea-header-top {
+                width: 100% !important;
+                height: 1px !important;
+                background-color: #e5e5e5 !important;
+                margin: 0 !important;
+            }
+
+            /* 3. Fila del Logo (Izquierda) y Botón Hamburguesa (Derecha) */
+            .header-logo-row {
+                width: 100% !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                padding: 12px 20px !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important; /* Segunda línea gris separadora */
+            }
+
+            /* Imagen del óvalo aplicada exclusivamente para celular */
+            .punto-en-vivo-ticker {
+                display: inline-block !important;
+                width: 25px !important;            /* Ajusta el ancho según tu imagen */
+                height: 12px !important;            /* Ajusta el alto según tu imagen */
+                background-image: url('ovalo.png') !important;
+                background-size: contain !important;
+                background-repeat: no-repeat !important;
+                background-position: center !important;
+                background-color: transparent !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                min-width: unset !important;
+                max-height: unset !important;
+            }
+
+            .logo-img {
+                width: 90px !important;
+                margin: 0 !important;
+            }
+
+            .mobile-menu-toggle {
+                display: flex !important;
+                position: static !important;
+                padding: 5px !important;
+            }
+        }
+
         /* Ocultar barra de scroll en los carruseles */
         div[id^="galeria-"]::-webkit-scrollbar {
             display: none;
@@ -73,79 +140,77 @@
             display: inline-block;
             animation: parpadeoRojo 1.4s infinite ease-in-out;
         }
-/* La primera vista arranca visible */
-.slide-1 {
-    animation: aparecerVista1 8s infinite ease-in-out;
-}
+        /* La primera vista arranca visible */
+        .slide-1 {
+            animation: aparecerVista1 8s infinite ease-in-out;
+        }
 
-/* La segunda vista arranca oculta y aparece después */
-.slide-2 {
-    animation: aparecerVista2 8s infinite ease-in-out;
-}
+        /* La segunda vista arranca oculta y aparece después */
+        .slide-2 {
+            animation: aparecerVista2 8s infinite ease-in-out;
+        }
 
-/* Animación para la Vista 1 (CREA TU BOOM) */
-@keyframes aparecerVista1 {
-    0%, 45% {
-        opacity: 1;
-        visibility: visible;
-    }
-    50%, 95% {
-        opacity: 0;
-        visibility: hidden;
-    }
-    100% {
-        opacity: 1;
-        visibility: visible;
-    }
-}
+        /* Animación para la Vista 1 (CREA TU BOOM) */
+        @keyframes aparecerVista1 {
+            0%, 45% {
+                opacity: 1;
+                visibility: visible;
+            }
+            50%, 95% {
+                opacity: 0;
+                visibility: hidden;
+            }
+            100% {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
 
-/* Animación para la Vista 2 (Palabras a tamaño 3) */
-@keyframes aparecerVista2 {
-    0%, 45% {
-        opacity: 0;
-        visibility: hidden;
-    }
-    50%, 95% {
-        opacity: 1;
-        visibility: visible;
-    }
-    100% {
-        opacity: 0;
-        visibility: hidden;
-    }
-}
+        /* Animación para la Vista 2 (Palabras a tamaño 3) */
+        @keyframes aparecerVista2 {
+            0%, 45% {
+                opacity: 0;
+                visibility: hidden;
+            }
+            50%, 95% {
+                opacity: 1;
+                visibility: visible;
+            }
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- HEADER CON TUS CLASES EXACTAS DE STYLE.CSS -->
+    <!-- HEADER STYLE EN MÓVIL / TRADICIONAL EN ORDENADOR -->
     <header class="editorial-header">
         <div class="header-container">
             
             <!-- CINTA DE TEXTO DESLIZANTE (TICKER) -->
-        <div class="top-bar-ticker">
-            <div class="ticker-track">
-                <!-- Grupo 1 -->
-                <div class="ticker-item">
-                    <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
-                    <span class="punto-en-vivo-ticker"></span>
-                    <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
-                    <span class="punto-en-vivo-ticker"></span>
-                </div>
-                <!-- Grupo 2 (Duplicado para loop continuo) -->
-                <div class="ticker-item">
-                    <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
-                    <span class="punto-en-vivo-ticker"></span>
-                    <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
-                    <span class="punto-en-vivo-ticker"></span>
+            <div class="top-bar-ticker">
+                <div class="ticker-track">
+                    <!-- Grupo 1 -->
+                    <div class="ticker-item">
+                        <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
+                        <span class="punto-en-vivo-ticker"></span>
+                        <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
+                        <span class="punto-en-vivo-ticker"></span>
+                    </div>
+                    <!-- Grupo 2 (Duplicado para loop continuo) -->
+                    <div class="ticker-item">
+                        <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
+                        <span class="punto-en-vivo-ticker"></span>
+                        <span>UN ESPACIO PARA QUIENES QUIEREN CRECER, APRENDER Y ENTENDER LO QUE PASA EN EL MUNDO DE QUIENES EMPRENDEN, CREAN Y HACEN</span>
+                        <span class="punto-en-vivo-ticker"></span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- LÍNEA SEPARADORA SUPERIOR -->
-        <div class="linea-header-top"></div>
-
-        
+            <!-- LÍNEA SEPARADORA SUPERIOR -->
+            <div class="linea-header-top"></div>
 
             <!-- Fila del Logo -->
             <div class="header-logo-row">
@@ -174,7 +239,8 @@
     </header>
 
     <!-- CONTENIDO DEL ARTÍCULO -->
-<main class="container" style="max-width: 1250px; margin: 3rem auto 0; padding: 0 1.5rem;">        <div id="detalle-articulo" style="margin-bottom: 0 !important; padding-bottom: 0 !important;">
+    <main class="container" style="max-width: 1250px; margin: 3rem auto 0; padding: 0 1.5rem;">        
+        <div id="detalle-articulo" style="margin-bottom: 0 !important; padding-bottom: 0 !important;">
             <h1>Cargando contenido...</h1>
         </div>
     </main>
@@ -459,96 +525,88 @@
                                     ${htmlUltimosPosts}
                                 </div>
                             </div>
-                            <div class="caja-marca-boom" style="overflow: hidden; border-radius: 2px; background-color: #121212; position: relative; height: 480px;">
-    
-    <!-- VISTA 1: CREA TU BOOM -->
-    <div class="slide-boom slide-1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box; padding: 1rem; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-        <span class="badge-marca">CONOCE MÁS A</span>
-        <h3 class="titulo-marca">CREA TU BOOM</h3>
-        <p class="texto-marca">
-            Un espacio para quienes quieren crecer, aprender y entender lo que pasa en el mundo de quienes emprenden, crean y hacen.
-        </p>
-        <a href="https://instagram.com/creatuboom" target="_blank" rel="noopener noreferrer" 
-           style="display: block; width: 55%; margin: 0 auto; text-align: center; background-color: #e2242a; color: #ffffff; text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.55rem 1rem; border-radius: 50% / 100%; font-family: 'Inter', sans-serif;">
-            Ir a conocer
-        </a>
-    </div>
+                            
+                            <div class="caja-marca-boom" style="overflow: hidden; border-radius: 2px; background-color: #121212; position: relative; height: 480px; margin-top: 2rem;">
+                                <!-- VISTA 1: CREA TU BOOM -->
+                                <div class="slide-boom slide-1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box; padding: 1rem; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                                    <span class="badge-marca">CONOCE MÁS A</span>
+                                    <h3 class="titulo-marca">CREA TU BOOM</h3>
+                                    <p class="texto-marca">
+                                        Un espacio para quienes quieren crecer, aprender y entender lo que pasa en el mundo de quienes emprenden, crean y hacen.
+                                    </p>
+                                    <a href="https://instagram.com/creatuboom" target="_blank" rel="noopener noreferrer" 
+                                       style="display: block; width: 55%; margin: 0 auto; text-align: center; background-color: #e2242a; color: #ffffff; text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.55rem 1rem; border-radius: 50% / 100%; font-family: 'Inter', sans-serif;">
+                                        Ir a conocer
+                                    </a>
+                                </div>
 
-    <!-- VISTA 2: PALABRAS APILADAS -->
-    <div class="slide-boom slide-2" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box; padding: 1rem; font-family: 'Inter', sans-serif; display: flex; justify-content: center; align-items: center;">
-        <div class="titulo-marca" style="display: flex; flex-direction: column; text-align: center; font-size: 3rem; line-height: 1.1; margin: 0; letter-spacing: -0.02em;">
-            <span>CRECER</span>
-            <span>APRENDER</span>
-            <span>ENTENDER</span>
-            <span>EMPRENDER</span>
-            <span>CREAR</span>
-            <span>HACER</span>
-        </div>
-    </div>
+                                <!-- VISTA 2: PALABRAS APILADAS -->
+                                <div class="slide-boom slide-2" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box; padding: 1rem; font-family: 'Inter', sans-serif; display: flex; justify-content: center; align-items: center;">
+                                    <div class="titulo-marca" style="display: flex; flex-direction: column; text-align: center; font-size: 3rem; line-height: 1.1; margin: 0; letter-spacing: -0.02em;">
+                                        <span>CRECER</span>
+                                        <span>APRENDER</span>
+                                        <span>ENTENDER</span>
+                                        <span>EMPRENDER</span>
+                                        <span>CREAR</span>
+                                        <span>HACER</span>
+                                    </div>
+                                </div>
+                            </div>
 
-</div>
-
-    </div>
-</div>
-</div>
                         </aside>
 
                     </div> <!-- Fin de .layout-articulo -->
 
                     <!-- SECCIÓN INFERIOR DE ANCHO COMPLETO (FONDO GRIS Y TEXTO BLANCO) -->
-                        <div class="barra-compartir"; style="width: 100%; max-width: 1700px; margin: 0 auto; padding: 1.5rem 2rem; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2rem; box-sizing: border-box;">
-                            <div style="display: flex; align-items: center; gap: 1.5rem; flex: 1; min-width: 300px;">
-                                <span style="font-size: 0.95rem; font-weight: 600; color: #ffffff; font-family: 'Inter', sans-serif; white-space: nowrap;">
-                                    Compartir nota:
-                                </span>
-                                
-                                <div style="display: flex; gap: 0.75rem; align-items: center;">
-                                    <!-- WhatsApp -->
-                                    <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(post.title + ' ' + window.location.href)}" target="_blank" rel="noopener noreferrer" style="width: 38px; height: 38px; border: 1px solid #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='#c62a2f';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#ffffff';" title="Compartir en WhatsApp">
-                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                                    </a>
+                    <div class="barra-compartir" style="width: 100%; max-width: 1700px; margin: 0 auto; padding: 1.5rem 2rem; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2rem; box-sizing: border-box;">
+                        <div style="display: flex; align-items: center; gap: 1.5rem; flex: 1; min-width: 300px;">
+                            <span style="font-size: 0.95rem; font-weight: 600; color: #ffffff; font-family: 'Inter', sans-serif; white-space: nowrap;">
+                                Compartir nota:
+                            </span>
+                            
+                            <div style="display: flex; gap: 0.75rem; align-items: center;">
+                                <!-- WhatsApp -->
+                                <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(post.title + ' ' + window.location.href)}" target="_blank" rel="noopener noreferrer" style="width: 38px; height: 38px; border: 1px solid #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='#c62a2f';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#ffffff';" title="Compartir en WhatsApp">
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                                </a>
 
-                                    <!-- Facebook -->
-                                    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank" rel="noopener noreferrer" style="width: 38px; height: 38px; border: 1px solid #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='#c62a2f';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#ffffff';" title="Compartir en Facebook">
-                                        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.37 14.5 5 15.5 5H18V0h-3.808C10.592 0 9 1.582 9 4.75V8z"/></svg>
-                                    </a>
+                                <!-- Facebook -->
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank" rel="noopener noreferrer" style="width: 38px; height: 38px; border: 1px solid #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='#c62a2f';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#ffffff';" title="Compartir en Facebook">
+                                    <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.37 14.5 5 15.5 5H18V0h-3.808C10.592 0 9 1.582 9 4.75V8z"/></svg>
+                                </a>
 
-                                    <!-- X (Twitter) -->
-                                    <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(post.title)}" target="_blank" rel="noopener noreferrer" style="width: 38px; height: 38px; border: 1px solid #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='#c62a2f';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#ffffff';" title="Compartir en X">
-                                        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                                    </a>
+                                <!-- X (Twitter) -->
+                                <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(post.title)}" target="_blank" rel="noopener noreferrer" style="width: 38px; height: 38px; border: 1px solid #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='#c62a2f';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#ffffff';" title="Compartir en X">
+                                    <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                </a>
 
-                                    <!-- LinkedIn -->
-                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}" target="_blank" rel="noopener noreferrer" style="width: 38px; height: 38px; border: 1px solid #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='#c62a2f';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#ffffff';" title="Compartir en LinkedIn">
-                                        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                                    </a>
+                                <!-- LinkedIn -->
+                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}" target="_blank" rel="noopener noreferrer" style="width: 38px; height: 38px; border: 1px solid #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='#c62a2f';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#ffffff';" title="Compartir en LinkedIn">
+                                    <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                </a>
 
-                                    <!-- Telegram -->
-                                    <a href="https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(post.title)}" target="_blank" rel="noopener noreferrer" style="width: 38px; height: 38px; border: 1px solid #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='#c62a2f';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#ffffff';" title="Compartir en Telegram">
-                                        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.897 8.326l-2.07 9.75c-.15.683-.553.85-1.122.53l-3.104-2.288-1.498 1.443c-.166.166-.306.306-.627.306l.221-3.155 5.733-5.176c.249-.221-.055-.344-.383-.124l-7.09 4.467-3.056-.954c-.663-.208-.677-.663.14-.981l11.936-4.603c.552-.202 1.035.126.852.809z"/></svg>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <!-- LÍNEA VERTICAL SEPARADORA BLANCA -->
-                            <div style="width: 1px; background-color: #ffffff; align-self: stretch; display: none;"></div>
-
-                            <!-- BLOQUE DERECHO: LLAMADO AL AUTOR (EN UN SOLO RENGLÓN) -->
-                            <div style="display: flex; align-items: center; justify-content: right; gap: 1.5rem; flex: 1.3; min-width: 320px;">
-                                <p style="font-size: 0.95rem; font-weight: 500; color: #ffffff; margin: 0; font-family: 'Inter', sans-serif; white-space: nowrap;">
-                                    ¿Te gustó este tipo de contenido? Conoce más acerca del autor
-                                </p>
-                                
-                                <a href="${instagramUrl}" target="_blank" rel="noopener noreferrer" 
-                                   style="display: inline-block; background-color: #c62a2f; color: #ffffff; padding: 0.7rem 1.6rem; border-radius: 30px; font-weight: 600; font-size: 0.9rem; text-decoration: none; font-family: 'Inter', sans-serif; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); white-space: nowrap;"
-                                   onmouseover="this.style.backgroundColor='#a82227'; this.style.transform='translateY(-2px)';" 
-                                   onmouseout="this.style.backgroundColor='#c62a2f'; this.style.transform='translateY(0)';">
-                                    Conoce su trabajo
+                                <!-- Telegram -->
+                                <a href="https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(post.title)}" target="_blank" rel="noopener noreferrer" style="width: 38px; height: 38px; border: 1px solid #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='#c62a2f';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#ffffff';" title="Compartir en Telegram">
+                                    <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.897 8.326l-2.07 9.75c-.15.683-.553.85-1.122.53l-3.104-2.288-1.498 1.443c-.166.166-.306.306-.627.306l.221-3.155 5.733-5.176c.249-.221-.055-.344-.383-.124l-7.09 4.467-3.056-.954c-.663-.208-.677-.663.14-.981l11.936-4.603c.552-.202 1.035.126.852.809z"/></svg>
                                 </a>
                             </div>
+                        </div>
 
-                        </div> <!-- Fin de .barra-compartir -->
+                        <!-- BLOQUE DERECHO: LLAMADO AL AUTOR (EN UN SOLO RENGLÓN) -->
+                        <div style="display: flex; align-items: center; justify-content: right; gap: 1.5rem; flex: 1.3; min-width: 320px;">
+                            <p style="font-size: 0.95rem; font-weight: 500; color: #ffffff; margin: 0; font-family: 'Inter', sans-serif; white-space: nowrap;">
+                                ¿Te gustó este tipo de contenido? Conoce más acerca del autor
+                            </p>
+                            
+                            <a href="${instagramUrl}" target="_blank" rel="noopener noreferrer" 
+                               style="display: inline-block; background-color: #c62a2f; color: #ffffff; padding: 0.7rem 1.6rem; border-radius: 30px; font-weight: 600; font-size: 0.9rem; text-decoration: none; font-family: 'Inter', sans-serif; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); white-space: nowrap;"
+                               onmouseover="this.style.backgroundColor='#a82227'; this.style.transform='translateY(-2px)';" 
+                               onmouseout="this.style.backgroundColor='#c62a2f'; this.style.transform='translateY(0)';">
+                                Conoce su trabajo
+                            </a>
+                        </div>
 
+                    </div> <!-- Fin de .barra-compartir -->
                 `;
 
             } catch (error) {
@@ -558,30 +616,30 @@
         }
 
         cargarDetallePost();
-        
     </script>
-       <!-- Carga de la fuente Inter desde Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
-<footer class="site-footer">
-  <div class="footer-container">
-    <!-- Logo en el centro -->
-    <div class="footer-logo">
-      <img src="LOGO.png" alt="Logo">
-    </div>
+    <!-- Carga de la fuente Inter desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
-    <!-- Texto descriptivo en gris -->
-    <p class="footer-description">
-      Un espacio para quienes quieren crecer, aprender y entender lo que pasa en el mundo de quienes emprenden, crean y hacen.
-    </p>
+    <footer class="site-footer">
+      <div class="footer-container">
+        <!-- Logo en el centro -->
+        <div class="footer-logo">
+          <img src="LOGO.png" alt="Logo">
+        </div>
 
-    <!-- Derechos reservados -->
-    <p class="footer-copyright">
-      Crea tu Boom® Todos los derechos reservados.
-    </p>
-  </div>
-</footer>
+        <!-- Texto descriptivo en gris -->
+        <p class="footer-description">
+          Un espacio para quienes quieren crecer, aprender y entender lo que pasa en el mundo de quienes emprenden, crean y hacen.
+        </p>
+
+        <!-- Derechos reservados -->
+        <p class="footer-copyright">
+          Crea tu Boom® Todos los derechos reservados.
+        </p>
+      </div>
+    </footer>
 </body>
 </html>
