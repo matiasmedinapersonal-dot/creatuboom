@@ -52,7 +52,7 @@
             /* Imagen del óvalo aplicada exclusivamente para celular */
             .punto-en-vivo-ticker {
                 display: inline-block !important;
-                width: 25px !important;              /* Ajusta el ancho según tu imagen */
+                width: 25px !important;             /* Ajusta el ancho según tu imagen */
                 height: 12px !important;             /* Ajusta el alto según tu imagen */
                 background-image: url('ovalo.png') !important;
                 background-size: contain !important;
@@ -106,6 +106,12 @@
 
             .btn-primary {
                 width: 100% !important; /* El botón ocupa el ancho completo para verse ordenado */
+            }
+
+            /* 5. Ajuste del tamaño del título en la sección Periodismo Ciudadano para móvil */
+            .section-header .section-title {
+                font-size: 1.8rem !important;
+                word-break: break-word !important;
             }
         }
     </style>
@@ -383,4 +389,4 @@ const enlacePost = `post.html?slug=${post.slug}`;
   cargarArticulosDeSanity();
 </script>
 </body>
-</html>
+</html>[cite: 1]
