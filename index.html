@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CREATUBOOM</title>
+    
+    <!-- FAVICON AGREGADO -->
+    <link rel="icon" type="image/png" href="LOGOROJO.png">
+
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,7 +57,7 @@
             .punto-en-vivo-ticker {
                 display: inline-block !important;
                 width: 25px !important;             /* Ajusta el ancho según tu imagen */
-                height: 12px !important;             /* Ajusta el alto según tu imagen */
+                height: 12px !important;            /* Ajusta el alto según tu imagen */
                 background-image: url('ovalo.png') !important;
                 background-size: contain !important;
                 background-repeat: no-repeat !important;
@@ -274,11 +278,11 @@
             <div class="stat-label">Contenido Independiente</div>
         </div>
         <div class="stat-item">
-            <div class="stat-number">+3000<span></div>
+            <div class="stat-number">+3000</div>
             <div class="stat-label">Personas en la Comunidad</div>
         </div>
         <div class="stat-item">
-            <div class="stat-number">+7000<span></div>
+            <div class="stat-number">+7000</div>
             <div class="stat-label">Visitas Mensuales</div>
         </div>
         <div class="stat-item">
@@ -297,9 +301,8 @@
 
            <div class="articles-grid" id="contenedor-sanity">
            </div>
-           <!-- Botón de colaboración eliminado por completo en celular -->
-</div>
-    </section>
+    </div>
+</section>
 
     <!-- MANIFESTO -->
     <section class="manifesto" id="manifiesto">
@@ -308,14 +311,9 @@
             <blockquote class="quote-text">
              <strong>La autenticidad, la honestidad y la voz personal</strong> son la base de gran parte de lo que tiene éxito en la era digital.
             </blockquote>
-            <p class="author">Rick Levine
+            <p class="author">Rick Levine</p>
         </div>
     </section>
-
-    <!-- Carga de la fuente Inter desde Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
 <footer class="site-footer">
   <div class="footer-container">
@@ -378,7 +376,7 @@
         const fechaFormateada = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('es-ES') : '';
         const nombreAutor = post.author && post.author.name ? post.author.name : 'Redacción';
 
-const enlacePost = `post.html?slug=${post.slug}`;
+        const enlacePost = `post.html?slug=${post.slug}`;
 
         return `
           <article class="article-card">
