@@ -11,12 +11,6 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Animación tipo live para el texto en móvil */
-        @keyframes parpadeoLive {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
         /* AJUSTES EXCLUSIVOS PARA MÓVIL (No afecta a la versión PC) */
         @media (max-width: 768px) {
             .header-container {
@@ -135,24 +129,9 @@
                 text-align: center !important;
             }
 
-            /* 6. Reemplazo del botón por texto animado interactivo en celular */
-            .cta-colaborar-container .btn-colaborar {
-                background: transparent !important;
-                color: #a0092c !important;
-                font-size: 0 !important;
-                text-decoration: none !important;
-                display: block !important;
-                text-align: center !important;
-                padding: 1rem 0 !important;
-                box-shadow: none !important;
-            }
-
-            .cta-colaborar-container .btn-colaborar::after {
-                content: "CONTÁCTANOS Y PUBLICA TU CONTENIDO AQUÍ" !important;
-                font-size: 0.85rem !important;
-                font-weight: 700 !important;
-                display: inline-block !important;
-                animation: parpadeoLive 1.5s infinite ease-in-out !important;
+            /* 6. Eliminación completa del botón de colaboración en celular */
+            .cta-colaborar-container {
+                display: none !important;
             }
         }
     </style>
