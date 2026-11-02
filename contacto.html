@@ -76,26 +76,20 @@
                 padding: 5px !important;
             }
 
-            /* 4. Botón de envío en forma de óvalo perfecto con la imagen ovalo.png para celular */
+            /* 4. Botón de envío con forma de píldora (recto al medio y redondeado en los extremos) para celular */
             .btn-submit {
-                width: 160px !important;
-                height: 75px !important;
-                background-image: url('ovalook.png' -> 'ovalo.png') !important; /* Usamos ovalo.png */
-                background-image: url('ovalo.png') !important;
-                background-size: contain !important;
-                background-repeat: no-repeat !important;
-                background-position: center !important;
-                background-color: transparent !important;
-                border-radius: 0 !important;
-                box-shadow: none !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
+                width: 85% !important;
+                max-width: 320px !important;
+                height: auto !important;
+                background-image: none !important;
+                background-color: #a0092c !important;
+                border-radius: 50px !important;
+                display: block !important;
                 margin: 0 auto !important;
-                padding: 0 !important;
-                font-size: 0.75rem !important;
+                padding: 14px 20px !important;
+                font-size: 0.85rem !important;
                 text-align: center !important;
-                line-height: 1.1 !important;
+                box-shadow: 0 4px 10px rgba(160, 9, 44, 0.3) !important;
             }
         }
 
@@ -309,7 +303,7 @@
                 <textarea id="mensaje" name="Mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
             </div>
 
-            <!-- BOTÓN ELÍPTICO -->
+            <!-- BOTÓN EN FORMA DE PÍLDORA -->
             <div class="btn-submit-container">
                 <button type="submit" class="btn-submit">
                     Enviar mensaje
