@@ -376,7 +376,7 @@
         const fechaFormateada = post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('es-ES') : '';
         const nombreAutor = post.author && post.author.name ? post.author.name : 'Redacción';
 
-        const enlacePost = `post.html?slug=${post.slug}`;
+        const enlacePost = `/post/?slug=${post.slug}`;
 
         return `
           <article class="article-card">
